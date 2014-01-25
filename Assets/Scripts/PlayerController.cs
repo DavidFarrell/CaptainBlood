@@ -7,14 +7,12 @@ public class PlayerController : FSMSystem {
 	public Character_Idle s_idle;
 	public Character_Walk s_walk;
 	public Character_Jump s_jump;
-	public Character_Falling s_fall;
 	public Character_Ladder s_ladder;
-	public Character_Stunned s_stun;
-	public Character_Interact s_interact;
 	
 	public bool facingRight = true;
 	public bool grounded;
 	public float horizAxis;
+	public float vertAxis;
 	public float moveForce;
 	public float jumpForce;
 	public float maxSpeed;	
@@ -33,14 +31,8 @@ public class PlayerController : FSMSystem {
 		s_walk.Parent = this;
 		AddState (s_jump);
 		s_jump.Parent = this;
-		AddState( s_fall );
-		s_fall.Parent = this;
-		AddState( s_ladder );
+		AddState (s_ladder);
 		s_ladder.Parent = this;
-		AddState( s_stun );
-		s_stun.Parent = this;
-		AddState( s_interact );
-		s_interact.Parent = this;
 
 		//goto first default state
 		GoToState( s_idle );
@@ -54,7 +46,9 @@ public class PlayerController : FSMSystem {
 		return "Jump" + playerNumber.ToString();
 	}
 
-
+	public string VertInput(){
+		return "Vertical" + playerNumber.ToString();
+	}
 
 	/// <summary>
 	/// Flip the direction character is facing
@@ -78,5 +72,14 @@ public class PlayerController : FSMSystem {
 			audio.Play ();
 		}
 
+	}
+
+	public void OnTriggerEnter2D(Collider2D other) {
+		vertAxis = Input.GetAxis(VertInput());
+		//Debug.Log("Vertical input player " + playerNumber.ToString() + ": " + vertAxis);
+		if(other.name == "ladder" && vertAxis < 0.1){		//Note that a negative vertical input means aiming up with the joystick! (it's weird but is like this...)
+			Debug.Log ("Climbing ladder!");
+			GoToState(s_ladder);
+		}
 	}
 }

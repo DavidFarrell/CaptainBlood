@@ -22,6 +22,20 @@ public class Character_Idle : FSMState {
 		if (Input.GetButtonDown (Parent.JumpInput ())) {
 			Parent.GoToState( Parent.s_jump );
 		}
+
+		if (Input.GetButtonDown (Parent.InteractInput())){
+			Debug.Log ("Interact button pressed: X");
+			if(Parent.facedPoster){
+				if(Parent.playerNumber == 1){
+					Parent.facedPoster.ChangePoster(2);
+				}else if(Parent.playerNumber == 2){
+					Parent.facedPoster.ChangePoster(1);
+				}
+			}else{
+				Debug.Log ("The poster was null");
+			}
+		}
+
 		//retrieve axis info
 		Parent.horizAxis = Input.GetAxis(Parent.HorizInput());
 		

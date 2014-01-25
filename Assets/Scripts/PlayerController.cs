@@ -16,6 +16,7 @@ public class PlayerController : FSMSystem {
 
 	
 	public bool facingRight = true;
+	public Poster facedPoster;			//A reference to the poster which the player is in front of. Null if there is not any poster behind the player
 	public bool grounded;
 	public float horizAxis;
 	public float vertAxis;
@@ -63,6 +64,10 @@ public class PlayerController : FSMSystem {
 
 	public string VertInput(){
 		return "Vertical" + playerNumber.ToString();
+	}
+
+	public string InteractInput(){
+		return "Interact" + playerNumber.ToString();
 	}
 
 	/// <summary>

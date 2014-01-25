@@ -12,6 +12,8 @@ public class PlayerController : FSMSystem {
 	public Character_Stunned s_stun;
 	public Character_Interact s_interact;
 
+	public Animator playerAnimator;
+
 	
 	public bool facingRight = true;
 	public bool grounded;
@@ -29,6 +31,9 @@ public class PlayerController : FSMSystem {
 
 	
 	void Awake(){
+
+		playerAnimator = GetComponent<Animator> ();
+
 		AddState( s_idle );
 		s_idle.Parent = this;
 		AddState (s_walk);

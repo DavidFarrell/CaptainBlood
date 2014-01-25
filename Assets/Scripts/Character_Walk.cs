@@ -14,6 +14,8 @@ public class Character_Walk : FSMState {
 	// Use this for initialization
 	public override void OnEnter () {
 		Debug.Log( "Entered " + this );
+		Parent.playerAnimator.SetTrigger ("walk");
+
 	}
 
 	public override void OnExit () {
@@ -67,7 +69,10 @@ public class Character_Walk : FSMState {
 		if( Parent.horizAxis > 0 && !Parent.facingRight){
 			// ... flip the player.
 			Parent.Flip();
-		}
+		} else if ( Parent.horizAxis < 0 && Parent.facingRight){
+			// ... flip the player.
+			Parent.Flip();
+		} 
 	
 	}
 }

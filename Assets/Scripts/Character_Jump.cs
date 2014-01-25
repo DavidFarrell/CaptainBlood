@@ -40,6 +40,11 @@ public class Character_Jump : FSMState {
 			Parent.GoToState (Parent.s_idle);
 		}
 
+		Parent.vertAxis = Input.GetAxis(Parent.VertInput());
+		if (Parent.canLadder && (Mathf.Abs (Parent.vertAxis) > 0.1f)) 
+		{
+			Parent.GoToState(Parent.s_ladder);
+		}
 
 		// interact
 		if (Input.GetButtonDown (Parent.InteractInput())){

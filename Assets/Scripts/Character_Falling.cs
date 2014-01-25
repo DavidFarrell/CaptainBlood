@@ -35,6 +35,11 @@ public class Character_Falling : FSMState {
 		if (Parent.grounded) {
 			Parent.GoToState (Parent.s_idle);
 		}
+		Parent.vertAxis = Input.GetAxis(Parent.VertInput());
+		if (Parent.canLadder && (Mathf.Abs (Parent.vertAxis) > 0.1f)) 
+		{
+			Parent.GoToState(Parent.s_ladder);
+		}
 	}
 	
 	

@@ -39,7 +39,11 @@ public class Character_Idle : FSMState {
 		if ( Parent.horizAxis > 0.1f || Parent.horizAxis < -0.1f ){
 			Parent.GoToState( Parent.s_walk );	
 		}
-
+		Parent.vertAxis = Input.GetAxis(Parent.VertInput());
+		if (Parent.canLadder && (Mathf.Abs (Parent.vertAxis) > 0.1f)) 
+		{
+			Parent.GoToState(Parent.s_ladder);
+		}
 
 		if ( Input.GetButtonDown (Parent.WeaponInput ()) ){
 			Parent.ThrowTrap();	

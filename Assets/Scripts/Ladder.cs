@@ -19,12 +19,10 @@ public class Ladder : MonoBehaviour {
 	public void OnTriggerEnter2D(Collider2D other) {
 		Debug.Log ("hitting ladder ");
 		if(other.gameObject.tag == "Player"){
-			pc = other.gameObject.GetComponent<PlayerController>();
-			Debug.Log ("facingLadder");
-//			pc.facingLadder = true;
+			other.gameObject.GetComponent<PlayerController>().canLadder = true;
 		}
 	}
-	
+/*
 	public void OnTriggerStay2D(Collider2D other) {
 		Debug.Log ("OnTriggerStay ");
 		if(other.gameObject.tag == "Player"){		//Note that a negative vertical input means aiming up with the joystick! (it's weird but is like this...)
@@ -37,19 +35,18 @@ public class Ladder : MonoBehaviour {
 				Debug.Log ("Climbing ladder! vertAxis" + pc.vertAxis);
 			}
 		}
-	}
+	}*/
 	
 	public void OnTriggerExit2D(Collider2D other){
+		Debug.Log ("Leaving ladder");
 		if (other.gameObject.tag == "Player") {		//Note that a negative vertical input means aiming up with the joystick! (it's weird but is like this...)
-			pc = other.gameObject.GetComponent<PlayerController> ();
-			pc.vertAxis = Input.GetAxis (pc.VertInput ());
-			Debug.Log ("not facingLadder");
-//			pc.facingLadder = false;
+			other.gameObject.GetComponent<PlayerController>().canLadder = false;
+		/*
 			if(!pc.grounded){
 				pc.GoToState(pc.s_fall);
 			}else{
 				pc.GoToState(pc.s_walk);
-			}
+			}*/
 		}
 	}
 }

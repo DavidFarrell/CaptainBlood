@@ -31,6 +31,12 @@ public class Character_Ladder: FSMState {
 		Parent.vertAxis = Input.GetAxis(Parent.VertInput());
 		Parent.horizAxis = Input.GetAxis(Parent.HorizInput());
 
+		if (!Parent.canLadder) 
+		{
+
+			Parent.GoToState (Parent.s_fall);
+		}
+
 		//Parent.transform.rigidbody2D.velocity = new Vector2(Mathf.Sign( Parent.transform.rigidbody2D.velocity.x) * Parent.maxSpeed, Parent.transform.rigidbody2D.velocity.y);
 		if (Mathf.Abs(Parent.horizAxis) > 0.1) { 
 			horizSpeed = (float)(Mathf.Sign (Parent.horizAxis) * Parent.maxSpeed * 0.4);

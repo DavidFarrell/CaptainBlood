@@ -19,6 +19,7 @@ public class PlayerController : FSMSystem {
 	public bool facingRight = true;
 	public Poster facedPoster;			//A reference to the poster which the player is in front of. Null if there is not any poster behind the player
 	public bool grounded;
+	public bool canLadder;
 	public float horizAxis;
 	public float vertAxis;
 	public float moveForce;
@@ -121,7 +122,7 @@ public class PlayerController : FSMSystem {
 			if ( hit[i].transform.tag == "Interactable" ){
 				Debug.Log( "GOT AN INTERACTABLE GAMEOBJECT :" + hit[i].transform.name );
 				
-				
+				//pushable ladder
 				switch( hit[i].transform.name ){
 				case "ladder":
 					hit[i].transform.GetComponent<PushableLadder>().Push( horizAxis );

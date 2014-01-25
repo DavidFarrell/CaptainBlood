@@ -63,7 +63,12 @@ public class Character_Walk : FSMState {
 			//Debug.Log("slowed down to idle");
 			Parent.GoToState (Parent.s_idle);
 		}
-		
+
+		Parent.vertAxis = Input.GetAxis(Parent.VertInput());
+		if (Parent.canLadder && (Mathf.Abs (Parent.vertAxis) > 0.1f)) 
+		{
+			Parent.GoToState(Parent.s_ladder);
+		}
 		//</ STATE TRANSITIONS>
 
 		

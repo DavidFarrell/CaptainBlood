@@ -13,7 +13,7 @@ public class Poster extends MonoBehaviour{
 	
 	function Start () {
 		mySR = gameObject.GetComponent(SpriteRenderer);
-		testPoster();
+		//testPoster();
 	}
 	
 	function Update () {

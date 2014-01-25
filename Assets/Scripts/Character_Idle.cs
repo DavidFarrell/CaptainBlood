@@ -6,7 +6,8 @@ public class Character_Idle : FSMState {
 	
 	[System.NonSerialized]
 	public PlayerController Parent;
-	
+
+
 	// Use this for initialization
 	public override void OnEnter () {
 		Debug.Log( "Entered " + this );
@@ -18,7 +19,7 @@ public class Character_Idle : FSMState {
 	//	Debug.Log( "UPDATING IDLE!!" );
 		
 		//retrieve axis info
-		Parent.horizAxis = Input.GetAxis("Horizontal1");
+		Parent.horizAxis = Input.GetAxis(Parent.HorizInput());
 		
 		if ( Parent.horizAxis > 0.1f || Parent.horizAxis < -0.1f ){
 			Parent.GoToState( Parent.s_walk );	

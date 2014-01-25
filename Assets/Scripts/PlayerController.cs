@@ -13,6 +13,10 @@ public class PlayerController : FSMSystem {
 	public float moveForce;
 	public float jumpForce;
 	public float maxSpeed;	
+	public float playerNumber;
+	public Transform playerGrounder;
+
+
 	
 	void Awake(){
 		
@@ -25,7 +29,17 @@ public class PlayerController : FSMSystem {
 		//goto first default state
 		GoToState( s_idle );
 	}
-	
+
+	public string HorizInput(){
+		return "Horizontal" + playerNumber.ToString();
+	}
+
+	public string JumpInput(){
+		return "Jump" + playerNumber.ToString();
+	}
+
+
+
 	/// <summary>
 	/// Flip the direction character is facing
 	/// </summary>
@@ -34,5 +48,10 @@ public class PlayerController : FSMSystem {
 		Vector3 scale = transform.localScale;
 		scale.x *= -1;
 		transform.localScale = scale;
+	}
+
+	public void LineCasting(){
+		Debug.DrawLine (transform.position, playerGrounder.position, Color.cyan);
+		grounded = Physics2D.Linecast (transform.position, playerGrounder.position, 1 << LayerMask.NameToLayer ("Middleground"));
 	}
 }

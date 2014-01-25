@@ -6,17 +6,19 @@ public class Character_Walk : FSMState {
 
 	[System.NonSerialized]
 	public PlayerController Parent;
+
 	
 	// Use this for initialization
 	public override void OnEnter () {
 		Debug.Log( "Entered " + this );
 	}
 	
+
 	// Update is called once per frame
 	public override void OnUpdate () {
-		
+		Parent.LineCasting();
 		//retrieve axis info
-		Parent.horizAxis = Input.GetAxis("Horizontal1");
+		Parent.horizAxis = Input.GetAxis(Parent.HorizInput());
 		
 		if( Mathf.Abs( Parent.transform.rigidbody2D.velocity.x) > 0.6 ){
 			if (Mathf.Abs( Parent.transform.rigidbody2D.velocity.x) >= Parent.maxSpeed){
@@ -33,9 +35,9 @@ public class Character_Walk : FSMState {
 		}
 		
 		
-//		if (Input.GetButtonDown ("Jump1") && grounded == true ){
-//				Parent.rigidbody2D.AddForce (Vector2.up * Parent.jumpForce);
-//		}
+		if (Input.GetButtonDown (Parent.JumpInput()) && Parent.grounded == true ){
+				Parent.rigidbody2D.AddForce (Vector2.up * Parent.jumpForce);
+		}
 		
 		// If the input is moving the player right and the player is facing left...
 		if( Parent.horizAxis > 0 && !Parent.facingRight){

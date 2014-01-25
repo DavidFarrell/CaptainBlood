@@ -7,7 +7,10 @@ public class Character_Walk : FSMState {
 	[System.NonSerialized]
 	public PlayerController Parent;
 
-	
+
+	private AudioSource baddieFootsteps;
+
+
 	// Use this for initialization
 	public override void OnEnter () {
 		Debug.Log( "Entered " + this );
@@ -16,7 +19,13 @@ public class Character_Walk : FSMState {
 
 	// Update is called once per frame
 	public override void OnUpdate () {
+
 		Parent.LineCasting();
+
+		// audio
+		Parent.playFootsteps ();
+
+
 		//retrieve axis info
 		Parent.horizAxis = Input.GetAxis(Parent.HorizInput());
 		

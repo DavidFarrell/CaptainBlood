@@ -13,19 +13,20 @@ public class PlayerController : FSMSystem {
 	public float moveForce;
 	public float jumpForce;
 	public float maxSpeed;	
+
 	public float playerNumber;
 	public Transform playerGrounder;
 
 
+	public AudioClip[] aClips;
+
 	
 	void Awake(){
-		
 		AddState( s_idle );
 		s_idle.Parent = this;
-		
 		AddState (s_walk);
 		s_walk.Parent = this;
-		
+
 		//goto first default state
 		GoToState( s_idle );
 	}
@@ -50,8 +51,17 @@ public class PlayerController : FSMSystem {
 		transform.localScale = scale;
 	}
 
+
 	public void LineCasting(){
 		Debug.DrawLine (transform.position, playerGrounder.position, Color.cyan);
 		grounded = Physics2D.Linecast (transform.position, playerGrounder.position, 1 << LayerMask.NameToLayer ("Middleground"));
+	}
+
+	public void playFootsteps() {
+		if (!audio.isPlaying) {
+			audio.clip = aClips [0];
+			audio.Play ();
+		}
+
 	}
 }

@@ -13,15 +13,14 @@ public class PlayerController : FSMSystem {
 	public float moveForce;
 	public float jumpForce;
 	public float maxSpeed;	
+	public AudioClip[] aClips;
 	
 	void Awake(){
-		
 		AddState( s_idle );
 		s_idle.Parent = this;
-		
 		AddState (s_walk);
 		s_walk.Parent = this;
-		
+
 		//goto first default state
 		GoToState( s_idle );
 	}
@@ -34,5 +33,12 @@ public class PlayerController : FSMSystem {
 		Vector3 scale = transform.localScale;
 		scale.x *= -1;
 		transform.localScale = scale;
+	}
+
+	public void playFootsteps() {
+		if (!audio.isPlaying) {
+			audio.clip = aClips [0];
+			audio.Play ();
+		}
 	}
 }

@@ -33,7 +33,7 @@ public class Trap : MonoBehaviour {
 
 	void OnTriggerEnter2D( Collider2D coll ) {
 		Debug.Log( "SOMETHING HAS HIT TRAP! - " + coll.name );
-
+		owner.playAudioTrapLand ();
 		//if ( activated ){
 			if ( coll.gameObject.tag == "Player"){
 			Debug.Log( "HITTING A PLAYER" );

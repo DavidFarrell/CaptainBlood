@@ -27,6 +27,8 @@ public class Character_Jump : FSMState {
 		
 		//	Debug.Log( "UPDATING JUMP!!" );
 
+		Parent.playAudioJump ();
+
 		if (Parent.rigidbody2D.velocity.y < 0) {
 			// Are we still in the air?
 			Parent.LineCasting ();						

@@ -52,7 +52,10 @@ public class Character_Walk : FSMState {
 		//<STATE TRANSITIONS>
 		// Jump
 		if (Input.GetButtonDown (Parent.JumpInput ())) {
+			Parent.playAudioJump ();
 			Parent.GoToState( Parent.s_jump );
+
+
 		}
 
 		// Idle

@@ -102,14 +102,6 @@ public class PlayerController : FSMSystem {
 		Debug.DrawLine (transform.position, playerGrounder.position, Color.cyan);
 		grounded = Physics2D.Linecast (transform.position, playerGrounder.position, 1 << LayerMask.NameToLayer ("Middleground"));
 	}
-
-	public void playAudioFootsteps() {
-		if (!audio.isPlaying) {
-			audio.clip = aClips [0];
-			audio.Play ();
-		}
-
-	}
 	
 	public void CheckInteraction(){
 		Debug.Log ("Interaction");
@@ -180,10 +172,28 @@ public class PlayerController : FSMSystem {
 		Vector2 force = new Vector2( horizAxis * 500.0f, 150.0f ) + rigidbody2D.velocity;
 		newTrap.rigidbody2D.AddForce( force ); 
 		newTrap.rigidbody2D.AddTorque( Random.Range( -25.0f, 25.0f ) );
+		playAudioTrapThrow ();
 	}
 
-	public void playAudioThrowTrap(){
-		audio.clip = aClips [PlayerController.PLAYER_SOUND_TRAP_THROW];
+	public void playAudioFootsteps() {
+		if (!audio.isPlaying) {
+			audio.clip = aClips [PlayerController.PLAYER_SOUND_WALKING];
+			audio.Play ();
+		}
+	}
+
+	public void playAudioTrapThrow(){
+		//audio.clip = aClips [PlayerController.PLAYER_SOUND_TRAP_THROW];
+		//audio.Play ();
+	}
+	
+	public void playAudioTrapLand(){
+		audio.clip = aClips [PlayerController.PLAYER_SOUND_TRAP_LAND];
+		audio.Play ();
+	}
+	
+	public void playAudioJump(){
+		audio.clip = aClips [PlayerController.PLAYER_SOUND_JUMP];
 		audio.Play ();
 	}
 }

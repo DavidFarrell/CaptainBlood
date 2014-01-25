@@ -96,14 +96,15 @@ public class DFCharacterWalk : FSMState {
 				Parent.transform.rigidbody2D.AddForce(Vector2.right * Parent.horizAxis * Parent.moveForce);				// ... add a force to the player.
 		}
 		
-		//STATE TRANSITIONS
+		//<STATE TRANSITIONS>
 		if (Input.GetButtonDown (Parent.JumpInput ())) {
 			Parent.GoToState( Parent.s_jump );
 		}
 		if (Mathf.Abs (Parent.transform.rigidbody2D.velocity.x) < 0.1f) {
 			Parent.GoToState (Parent.s_idle);
 		}
-		
+
+
 		/*		if (Input.GetButtonDown (Parent.JumpInput()) && Parent.grounded == true ){
 				Parent.rigidbody2D.AddForce (Vector2.up * Parent.jumpForce);
 		}*/

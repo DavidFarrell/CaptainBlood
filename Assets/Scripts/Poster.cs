@@ -25,6 +25,7 @@ public class Poster : MonoBehaviour {
 	}
 
 	public void ChangePoster(int poster){
+		Debug.Log ("poster change" + poster);
 		//Changes the poster to display to the one specified on the parameter 'poster'
 		switch (poster){
 		case 0:
@@ -49,7 +50,7 @@ public class Poster : MonoBehaviour {
 		//Returns the actual state of the poster
 		return state;
 	}
-
+	/*
 	public void OnTriggerEnter2D(Collider2D other) {
 		
 		Debug.Log ("Entering Poster: " + other.gameObject.tag);
@@ -66,6 +67,6 @@ public class Poster : MonoBehaviour {
 			pc = other.gameObject.GetComponent<PlayerController>();
 			pc.facedPoster = null;
 		}
-	}
+	}*/
 
 }

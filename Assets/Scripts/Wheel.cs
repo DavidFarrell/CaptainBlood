@@ -13,7 +13,7 @@ public class Wheel : MonoBehaviour {
 
 	}
 
-	public void OnTriggerEnter2D(Collider2D other) {
+/*	public void OnTriggerEnter2D(Collider2D other) {
 		
 		if(other.gameObject.tag == "Player"){		
 			pc = other.gameObject.GetComponent<PlayerController>();
@@ -31,5 +31,10 @@ public class Wheel : MonoBehaviour {
 	
 	public void OnTriggerExit2D(Collider2D other){
 		pc = null;
+	}*/
+
+	public void Grab(PlayerController pc){
+		pc.transform.parent = transform;
+		pc.GoToState(pc.s_wheel);
 	}
 }

@@ -21,7 +21,7 @@ public class Ladder : MonoBehaviour {
 		if(other.gameObject.tag == "Player"){
 			pc = other.gameObject.GetComponent<PlayerController>();
 			Debug.Log ("facingLadder");
-			pc.facingLadder = true;
+//			pc.facingLadder = true;
 		}
 	}
 	
@@ -44,7 +44,7 @@ public class Ladder : MonoBehaviour {
 			pc = other.gameObject.GetComponent<PlayerController> ();
 			pc.vertAxis = Input.GetAxis (pc.VertInput ());
 			Debug.Log ("not facingLadder");
-			pc.facingLadder = false;
+//			pc.facingLadder = false;
 			if(!pc.grounded){
 				pc.GoToState(pc.s_fall);
 			}else{

@@ -24,7 +24,12 @@ public class Character_Falling : FSMState {
 			// Are we still in the air?
 			Parent.LineCasting ();						
 		}
-		
+
+		// interact
+		if (Input.GetButtonDown (Parent.InteractInput())){
+			Parent.CheckInteraction();
+		}
+
 		//retrieve axis info
 		Parent.horizAxis = Input.GetAxis(Parent.HorizInput());
 		if (Parent.grounded) {

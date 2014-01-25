@@ -65,18 +65,10 @@ public class Character_Walk : FSMState {
 
 		
 		
+
 		// interact
 		if (Input.GetButtonDown (Parent.InteractInput())){
-			Debug.Log ("Interact button pressed: X");
-			if(Parent.facedPoster){
-				if(Parent.playerNumber == 1){
-					Parent.facedPoster.ChangePoster(2);
-				}else if(Parent.playerNumber == 2){
-					Parent.facedPoster.ChangePoster(1);
-				}
-			}else{
-				Debug.Log ("The poster was null");
-			}
+			Parent.CheckInteraction();
 		}
 		
 		if ( Input.GetButtonDown (Parent.WeaponInput ()) ){

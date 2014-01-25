@@ -19,14 +19,13 @@ public class PlayerController : FSMSystem {
 	public bool facingRight = true;
 	public Poster facedPoster;			//A reference to the poster which the player is in front of. Null if there is not any poster behind the player
 	public bool grounded;
-	public bool facingLadder; // true if player is in front of a ladder
 	public float horizAxis;
 	public float vertAxis;
 	public float moveForce;
 	public float jumpForce;
 	public float maxSpeed;	
 
-	public float playerNumber;
+	public int playerNumber;
 	public Transform playerGrounder;
 
 	// INDEXES INTO AUDIO
@@ -65,7 +64,7 @@ public class PlayerController : FSMSystem {
 		//goto first default state
 		GoToState( s_idle );
 
-		facingLadder = false;
+	
 	}
 
 	public string HorizInput(){
@@ -123,17 +122,35 @@ public class PlayerController : FSMSystem {
 			hit = Physics2D.RaycastAll( transform.position, Vector3.right, 1.0f );
 			Debug.DrawRay( transform.position, Vector3.right , Color.blue, 1.0f );
 		}
-
+		
+		bool hadHit = false;
 		for ( int i = 0; i < hit.Length; i++ ){
+			
 			if ( hit[i].transform.tag == "Interactable" ){
 				Debug.Log( "GOT AN INTERACTABLE GAMEOBJECT :" + hit[i].transform.name );
-
+				
+				
 				switch( hit[i].transform.name ){
 				case "ladder":
 					hit[i].transform.GetComponent<PushableLadder>().Push( horizAxis );
+					hadHit = true;	
+					break;
+					
+				case "Poster":
+					hit[i].transform.GetComponent<Poster>().ChangePoster( playerNumber );
+					hadHit = true;
+					break;
+				case "wheel":
+					hit[i].transform.GetComponent<Wheel>().Grab( this );
+					hadHit = true;
 					break;
 				}
 			}
+			
+			if ( hadHit ){
+				break;
+			}
+			
 		}
 	}
 

@@ -38,7 +38,12 @@ public class Character_Jump : FSMState {
 			Parent.GoToState (Parent.s_idle);
 		}
 
-		
+
+		// interact
+		if (Input.GetButtonDown (Parent.InteractInput())){
+			Parent.CheckInteraction();
+		}
+
 		//	if( Mathf.Abs( Parent.transform.rigidbody2D.velocity.x) > 0.6 ){
 		
 		//		Parent.GoToState( Parent.s_walk );

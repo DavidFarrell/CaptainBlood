@@ -88,6 +88,30 @@ public class PlayerController : FSMSystem {
 		}
 
 	}
+	
+	public void CheckInteraction(){
+		//fire a wee ray out of the player...
+		RaycastHit2D[] hit;
+		if ( horizAxis < 0 ){
+			hit = Physics2D.RaycastAll( transform.position, Vector3.left, 1.0f );
+			Debug.DrawRay( transform.position, Vector3.left , Color.green, 1.0f );
+		}else{
+			hit = Physics2D.RaycastAll( transform.position, Vector3.right, 1.0f );
+			Debug.DrawRay( transform.position, Vector3.right , Color.blue, 1.0f );
+		}
+
+		for ( int i = 0; i < hit.Length; i++ ){
+			if ( hit[i].transform.tag == "Interactable" ){
+				Debug.Log( "GOT AN INTERACTABLE GAMEOBJECT :" + hit[i].transform.name );
+
+				switch( hit[i].transform.name ){
+				case "ladder":
+					hit[i].transform.GetComponent<PushableLadder>().Push( horizAxis );
+					break;
+				}
+			}
+		}
+	}
 
 	/*
 	public void OnTriggerEnter2D(Collider2D other) {

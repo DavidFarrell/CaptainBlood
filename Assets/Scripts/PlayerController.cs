@@ -118,7 +118,7 @@ public class PlayerController : FSMSystem {
 		
 		bool hadHit = false;
 		for ( int i = 0; i < hit.Length; i++ ){
-			
+			Debug.Log("hit a thing: " + hit[i].transform.name);
 			if ( hit[i].transform.tag == "Interactable" ){
 				Debug.Log( "GOT AN INTERACTABLE GAMEOBJECT :" + hit[i].transform.name );
 				

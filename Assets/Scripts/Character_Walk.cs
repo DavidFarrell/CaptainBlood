@@ -15,12 +15,15 @@ public class Character_Walk : FSMState {
 	public override void OnEnter () {
 		Debug.Log( "Entered " + this );
 	}
-	
+
+	public override void OnExit () {
+		Debug.Log( "Exited " + this );
+	}
 
 	// Update is called once per frame
 	public override void OnUpdate () {
 
-		Parent.LineCasting();
+	//	Parent.LineCasting();
 
 		// audio
 		Parent.playFootsteps ();
@@ -43,10 +46,18 @@ public class Character_Walk : FSMState {
 			Parent.transform.rigidbody2D.AddForce(Vector2.right * Parent.horizAxis * Parent.moveForce);				// ... add a force to the player.
 		}
 		
-		
-		if (Input.GetButtonDown (Parent.JumpInput()) && Parent.grounded == true ){
-				Parent.rigidbody2D.AddForce (Vector2.up * Parent.jumpForce);
+
+		//STATE TRANSITIONS
+		if (Input.GetButtonDown (Parent.JumpInput ())) {
+			Parent.GoToState( Parent.s_jump );
 		}
+		if (Mathf.Abs (Parent.transform.rigidbody2D.velocity.x) < 0.1f) {
+						Parent.GoToState (Parent.s_idle);
+		}
+
+/*		if (Input.GetButtonDown (Parent.JumpInput()) && Parent.grounded == true ){
+				Parent.rigidbody2D.AddForce (Vector2.up * Parent.jumpForce);
+		}*/
 		
 		// If the input is moving the player right and the player is facing left...
 		if( Parent.horizAxis > 0 && !Parent.facingRight){

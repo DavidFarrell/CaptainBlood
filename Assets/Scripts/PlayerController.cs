@@ -6,6 +6,7 @@ public class PlayerController : FSMSystem {
 	//Add the states
 	public Character_Idle s_idle;
 	public Character_Walk s_walk;
+	public Character_Jump s_jump;
 	
 	public bool facingRight = true;
 	public bool grounded;
@@ -26,6 +27,8 @@ public class PlayerController : FSMSystem {
 		s_idle.Parent = this;
 		AddState (s_walk);
 		s_walk.Parent = this;
+		AddState (s_jump);
+		s_jump.Parent = this;
 
 		//goto first default state
 		GoToState( s_idle );

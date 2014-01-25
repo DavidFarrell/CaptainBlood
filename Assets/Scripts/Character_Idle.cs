@@ -17,7 +17,11 @@ public class Character_Idle : FSMState {
 	public override void OnUpdate () {
 	
 	//	Debug.Log( "UPDATING IDLE!!" );
-		
+
+		//STATE TRANSITIONS
+		if (Input.GetButtonDown (Parent.JumpInput ())) {
+			Parent.GoToState( Parent.s_jump );
+		}
 		//retrieve axis info
 		Parent.horizAxis = Input.GetAxis(Parent.HorizInput());
 		

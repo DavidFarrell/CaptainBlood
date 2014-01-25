@@ -28,11 +28,8 @@ public class Character_Wheel : FSMState {
 
 
 		Parent.rigidbody2D.isKinematic = false;
-		Debug.Log(Parent.transform.position);
 		circle = Parent.transform.parent.GetComponent<CircleCollider2D>();
-		Debug.Log(circle);
 		vec1 =  Parent.transform.parent.position - Parent.transform.position;
-		Debug.Log(vec1);
 		newvec = Vector3.Cross (vec1, Vector3.forward);
 		newvec.Normalize();
 		Parent.rigidbody2D.velocity = newvec *10;

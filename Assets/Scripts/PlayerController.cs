@@ -87,11 +87,7 @@ public class PlayerController : FSMSystem {
 	public string WeaponInput(){
 		return "Weapon" + playerNumber.ToString();
 	}
-
-	public string InteractInput(){
-		return "Interact" + playerNumber.ToString();
-	}
-
+	
 	/// <summary>
 	/// Flip the direction character is facing
 	/// </summary>

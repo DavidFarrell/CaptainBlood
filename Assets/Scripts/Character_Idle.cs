@@ -7,7 +7,6 @@ public class Character_Idle : FSMState {
 	[System.NonSerialized]
 	public PlayerController Parent;
 
-
 	// Use this for initialization
 	public override void OnEnter () {
 		Debug.Log( "Entered " + this );

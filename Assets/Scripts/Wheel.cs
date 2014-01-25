@@ -34,6 +34,7 @@ public class Wheel : MonoBehaviour {
 	}*/
 
 	public void Grab(PlayerController pc){
+		Debug.Log ("I was grabbed!");
 		pc.transform.parent = transform;
 		pc.GoToState(pc.s_wheel);
 	}

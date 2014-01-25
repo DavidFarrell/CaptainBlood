@@ -9,7 +9,7 @@ public class Character_Idle : FSMState {
 
 	// Use this for initialization
 	public override void OnEnter () {
-		Debug.Log( "Entered " + this );
+		//Debug.Log( "Entered " + this );
 		Parent.playerAnimator.SetTrigger ("idle");
 	}
 	
@@ -22,8 +22,11 @@ public class Character_Idle : FSMState {
 		if (Input.GetButtonDown (Parent.JumpInput ())) {
 			Parent.GoToState( Parent.s_jump );
 		}
+		// </STATE TRANSITIONS>
 
-		// interact
+
+		// <INTERACTIONS>
+		// posters
 		if (Input.GetButtonDown (Parent.InteractInput())){
 			Debug.Log ("Interact button pressed: X");
 			if(Parent.facedPoster){
@@ -36,8 +39,7 @@ public class Character_Idle : FSMState {
 				Debug.Log ("The poster was null");
 			}
 		}
-		// </STATE TRANSITIONS>
-
+		//</INTERACTIONS>
 
 		//retrieve axis info
 		Parent.horizAxis = Input.GetAxis(Parent.HorizInput());

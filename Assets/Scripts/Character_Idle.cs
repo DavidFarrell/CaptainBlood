@@ -61,11 +61,11 @@ public class Character_Idle : FSMState {
 //		if (Input.GetButtonDown ("Jump1") && grounded == true ){
 //				Parent.rigidbody2D.AddForce (Vector2.up * Parent.jumpForce);
 //		}
-		
-		if ( Input.GetButtonDown("Fire2") ){
+
+		if ( Input.GetButtonDown (Parent.WeaponInput ()) ){
 			Parent.ThrowTrap();	
 		}
-		
+
 		// If the input is moving the player right and the player is facing left...
 		if( Parent.horizAxis > 0 && !Parent.facingRight){
 			// ... flip the player.
@@ -73,4 +73,6 @@ public class Character_Idle : FSMState {
 		}
 		
 	}
+
+
 }

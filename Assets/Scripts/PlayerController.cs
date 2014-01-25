@@ -72,9 +72,13 @@ public class PlayerController : FSMSystem {
 	public string VertInput(){
 		return "Vertical" + playerNumber.ToString();
 	}
-
+	
 	public string InteractInput(){
 		return "Interact" + playerNumber.ToString();
+	}
+	
+	public string WeaponInput(){
+		return "Weapon" + playerNumber.ToString();
 	}
 
 	/// <summary>

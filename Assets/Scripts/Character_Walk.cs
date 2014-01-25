@@ -61,7 +61,7 @@ public class Character_Walk : FSMState {
 				Parent.rigidbody2D.AddForce (Vector2.up * Parent.jumpForce);
 		}*/
 		
-		if ( Input.GetButtonDown("Fire2") ){
+		if ( Input.GetButtonDown (Parent.WeaponInput ()) ){
 			Parent.ThrowTrap();	
 		}
 		

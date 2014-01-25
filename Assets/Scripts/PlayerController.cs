@@ -11,6 +11,7 @@ public class PlayerController : FSMSystem {
 	public Character_Ladder s_ladder;
 	public Character_Stunned s_stun;
 	public Character_Interact s_interact;
+	public Character_Wheel s_wheel;
 
 	public Animator playerAnimator;
 
@@ -57,6 +58,9 @@ public class PlayerController : FSMSystem {
 		s_stun.Parent = this;
 		AddState( s_interact );
 		s_interact.Parent = this;
+		AddState( s_wheel );
+		s_wheel.Parent = this;
+
 
 		//goto first default state
 		GoToState( s_idle );
@@ -82,6 +86,10 @@ public class PlayerController : FSMSystem {
 	
 	public string WeaponInput(){
 		return "Weapon" + playerNumber.ToString();
+	}
+
+	public string InteractInput(){
+		return "Interact" + playerNumber.ToString();
 	}
 
 	/// <summary>

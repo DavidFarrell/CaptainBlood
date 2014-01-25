@@ -106,6 +106,7 @@ public class PlayerController : FSMSystem {
 	}
 	
 	public void CheckInteraction(){
+		Debug.Log ("Interaction");
 		//fire a wee ray out of the player...
 		RaycastHit2D[] hit;
 		if ( horizAxis < 0 ){

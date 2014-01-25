@@ -10,14 +10,14 @@ public class Character_Jump : FSMState {
 	
 	// Use this for initialization
 	public override void OnEnter () {
-		Debug.Log( "Entered " + this );
+		//Debug.Log( "Entered " + this );
 		Parent.grounded = false;
 		Parent.rigidbody2D.AddForce (Vector2.up * Parent.jumpForce);
 		//Set Animation boolean true
 	}
 
 	public override void OnExit () {
-		Debug.Log( "Exited " + this );
+		//Debug.Log( "Exited " + this );
 		//Set Animation boolean false
 	}
 

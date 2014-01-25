@@ -13,13 +13,13 @@ public class Character_Walk : FSMState {
 
 	// Use this for initialization
 	public override void OnEnter () {
-		Debug.Log( "Entered " + this );
+		//Debug.Log( "Entered " + this );
 		Parent.playerAnimator.SetTrigger ("walk");
 
 	}
 
 	public override void OnExit () {
-		Debug.Log( "Exited " + this );
+	//	Debug.Log( "Exited " + this );
 	}
 
 	// Update is called once per frame
@@ -49,17 +49,35 @@ public class Character_Walk : FSMState {
 		}
 		
 
-		//STATE TRANSITIONS
+		//<STATE TRANSITIONS>
+		// Jump
 		if (Input.GetButtonDown (Parent.JumpInput ())) {
 			Parent.GoToState( Parent.s_jump );
 		}
-		if (Mathf.Abs (Parent.transform.rigidbody2D.velocity.x) < 0.1f) {
-						Parent.GoToState (Parent.s_idle);
-		}
 
-/*		if (Input.GetButtonDown (Parent.JumpInput()) && Parent.grounded == true ){
-				Parent.rigidbody2D.AddForce (Vector2.up * Parent.jumpForce);
-		}*/
+		// Idle
+		if (Mathf.Abs (Parent.transform.rigidbody2D.velocity.x) < 0.1f) {
+			Debug.Log("slowed down to idle");
+			Parent.GoToState (Parent.s_idle);
+		}
+		
+		//</ STATE TRANSITIONS>
+
+		
+		
+		// interact
+		if (Input.GetButtonDown (Parent.InteractInput())){
+			Debug.Log ("Interact button pressed: X");
+			if(Parent.facedPoster){
+				if(Parent.playerNumber == 1){
+					Parent.facedPoster.ChangePoster(2);
+				}else if(Parent.playerNumber == 2){
+					Parent.facedPoster.ChangePoster(1);
+				}
+			}else{
+				Debug.Log ("The poster was null");
+			}
+		}
 		
 		if ( Input.GetButtonDown (Parent.WeaponInput ()) ){
 			Parent.ThrowTrap();	

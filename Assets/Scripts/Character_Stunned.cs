@@ -10,16 +10,25 @@ public class Character_Stunned : FSMState {
 	float stunDuration;
 	float startTime;
 
+	Vector2 storedVelocity;
+
 	// Use this for initialization
 	public override void OnEnter ( object userData ) {
 		Debug.Log( "Entered " + this );
 
 		stunDuration = (float)userData;
+		startTime = Time.time;
+
+		storedVelocity = Parent.rigidbody2D.velocity;
+		Parent.rigidbody2D.isKinematic = true;
 	}
 
 	// Use this for initialization
 	public override void OnExit () {
 		Debug.Log( "Exiting " + this );
+
+		Parent.rigidbody2D.isKinematic = false;
+		Parent.rigidbody2D.velocity = storedVelocity;
 	}
 	
 	public override void OnUpdate(){

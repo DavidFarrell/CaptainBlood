@@ -57,7 +57,7 @@ public class Character_Walk : FSMState {
 
 		// Idle
 		if (Mathf.Abs (Parent.transform.rigidbody2D.velocity.x) < 0.1f) {
-			Debug.Log("slowed down to idle");
+			//Debug.Log("slowed down to idle");
 			Parent.GoToState (Parent.s_idle);
 		}
 		

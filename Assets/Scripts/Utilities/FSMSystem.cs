@@ -88,7 +88,7 @@ public class FSMSystem : MonoBehaviour {
 	/// </summary>
 	public void AddState( FSMState inState )
 	{			
-		Debug.Log(inState);
+		Debug.Log("State added to machine: " + inState);
 		
 		// Check for Null reference before deleting
 		if (inState == null)

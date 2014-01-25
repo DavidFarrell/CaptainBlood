@@ -99,4 +99,12 @@ public class PlayerController : FSMSystem {
 			GoToState(s_fall);
 		//}
 	}
+	
+	public void ThrowTrap(){
+		GameObject newTrap = GameObject.Instantiate( Resources.Load( "Trap" ), transform.position, Quaternion.identity ) as GameObject;
+		newTrap.GetComponent<Trap>().owner = this;
+		Vector2 force = new Vector2( horizAxis * 500.0f, 150.0f ) + rigidbody2D.velocity;
+		newTrap.rigidbody2D.AddForce( force ); 
+		newTrap.rigidbody2D.AddTorque( Random.Range( -25.0f, 25.0f ) );
+	}
 }

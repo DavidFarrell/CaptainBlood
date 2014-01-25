@@ -59,6 +59,10 @@ public class Character_Walk : FSMState {
 				Parent.rigidbody2D.AddForce (Vector2.up * Parent.jumpForce);
 		}*/
 		
+		if ( Input.GetButtonDown("Fire2") ){
+			Parent.ThrowTrap();	
+		}
+		
 		// If the input is moving the player right and the player is facing left...
 		if( Parent.horizAxis > 0 && !Parent.facingRight){
 			// ... flip the player.

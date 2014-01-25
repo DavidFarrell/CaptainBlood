@@ -64,5 +64,9 @@ public class Character_Jump : FSMState {
 			Parent.Flip();
 		}
 		
+		if ( Input.GetButtonDown("Fire2") ){
+			Parent.ThrowTrap();	
+		}
+		
 	}
 }

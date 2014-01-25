@@ -28,7 +28,7 @@ public class Character_Walk : FSMState {
 	//	Parent.LineCasting();
 
 		// audio
-		Parent.playFootsteps ();
+		Parent.playAudioFootsteps ();
 
 
 		//retrieve axis info

@@ -27,6 +27,13 @@ public class PlayerController : FSMSystem {
 	public float playerNumber;
 	public Transform playerGrounder;
 
+	// INDEXES INTO AUDIO
+	public static int PLAYER_SOUND_WALKING = 0;
+	public static int PLAYER_SOUND_JUMP = 1;
+	public static int PLAYER_SOUND_LAND = 2;
+	public static int PLAYER_SOUND_TRAP_THROW = 3;
+	public static int PLAYER_SOUND_TRAP_LAND = 4;
+
 
 	public AudioClip[] aClips;
 
@@ -86,7 +93,7 @@ public class PlayerController : FSMSystem {
 		grounded = Physics2D.Linecast (transform.position, playerGrounder.position, 1 << LayerMask.NameToLayer ("Middleground"));
 	}
 
-	public void playFootsteps() {
+	public void playAudioFootsteps() {
 		if (!audio.isPlaying) {
 			audio.clip = aClips [0];
 			audio.Play ();
@@ -144,5 +151,10 @@ public class PlayerController : FSMSystem {
 		Vector2 force = new Vector2( horizAxis * 500.0f, 150.0f ) + rigidbody2D.velocity;
 		newTrap.rigidbody2D.AddForce( force ); 
 		newTrap.rigidbody2D.AddTorque( Random.Range( -25.0f, 25.0f ) );
+	}
+
+	public void playAudioThrowTrap(){
+		audio.clip = aClips [PlayerController.PLAYER_SOUND_TRAP_THROW];
+		audio.Play ();
 	}
 }

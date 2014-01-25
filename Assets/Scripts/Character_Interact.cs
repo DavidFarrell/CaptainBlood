@@ -19,7 +19,5 @@ public class Character_Interact : FSMState {
 	
 	public override void OnUpdate(){
 		
-	}
-	
-	
+	}	
 }

@@ -33,7 +33,7 @@ public class Trap : MonoBehaviour {
 
 	void OnCollisionEnter2D(Collision2D coll) {
 		Debug.Log ("collide" + coll.gameObject.tag);
-		if (coll.gameObject.tag == "Ground") {
+		if (coll.gameObject.tag == "Middleground") {
 			owner.playAudioTrapLand ();
 		}
 	}

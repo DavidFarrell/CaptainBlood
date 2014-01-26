@@ -10,7 +10,7 @@ public class Character_Wheel : FSMState {
 	private Vector3 vec1;
 	private Vector3 newvec;
 
-
+	private int soundIndex;
 //	Vector2 storedVelocity;
 	
 	// Use this for initialization
@@ -18,13 +18,18 @@ public class Character_Wheel : FSMState {
 		Debug.Log( "Entered " + this );
 
 		//	storedVelocity = Parent.rigidbody2D.velocity;
-			Parent.rigidbody2D.isKinematic = true;
+		Parent.rigidbody2D.isKinematic = true;
+		soundIndex = Parent.speaker.playSound (AudioEngine.SOUND_POSTER_SCARED_SPINNING, true);
 
 	}
-	
+
 	// Use this for initialization
 	public override void OnExit () {
 		Debug.Log( "Exiting " + this );
+		
+		Parent.speaker.stopSound (soundIndex);
+		Parent.speaker.playSound (AudioEngine.SOUND_POSTER_WHOOSH, false);
+
 		Wheel wheel = Parent.transform.parent.GetComponent<Wheel>();
 
 

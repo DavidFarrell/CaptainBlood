@@ -8,10 +8,15 @@ public class Wheel : MonoBehaviour {
 	
 	public float wheelChuck;
 	public float rotationSpeed;
+	public AudioEngine speaker;
+	public int soundIndex;
 
 	void Update () {
 		transform.Rotate (0.0f, 0.0f, rotationSpeed);
+	}
 
+	void Start() {
+		soundIndex = speaker.playSound (AudioEngine.SOUND_POSTER_SKY_REEL, true);
 	}
 
 /*	public void OnTriggerEnter2D(Collider2D other) {
@@ -39,4 +44,6 @@ public class Wheel : MonoBehaviour {
 		pc.transform.parent = transform;
 		pc.GoToState(pc.s_wheel);
 	}
+
+
 }

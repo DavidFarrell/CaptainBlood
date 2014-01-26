@@ -15,6 +15,7 @@ public class AudioEngine : MonoBehaviour {
 	
 	public GameObject[] speakers;
 	public AudioClip[] sounds;
+	public bool[] leaveAlone;
 
 	public int numSpeakers = 20;
 	public int currentSpeaker = 0;
@@ -22,11 +23,13 @@ public class AudioEngine : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		speakers = new GameObject[numSpeakers];
+		leaveAlone = new bool[numSpeakers];
 
 		for (int i = 0; i < numSpeakers; i++) {
 			GameObject gameObject = new GameObject();
 			gameObject.AddComponent("AudioSource");
 			speakers[i] = gameObject;
+			leaveAlone[i] = false;
 		}
 	}
 	
@@ -35,15 +38,38 @@ public class AudioEngine : MonoBehaviour {
 	
 	}
 
-	void playSound(int sound) {
-
+	public int playSound(int sound, bool loop = false) {
+		int thisSpeaker = currentSpeaker;
 		GameObject gameObject = speakers [currentSpeaker];
 		gameObject.audio.clip = sounds [sound];
+		gameObject.audio.loop = loop;
 		gameObject.audio.Play ();
+
+		// for footsteps and other things that can't be overwritten
+		if (loop) {
+			leaveAlone [currentSpeaker] = true;
+		}
+
 		currentSpeaker++;
-		Debug.Log ("current speaker" + currentSpeaker);
 		if (currentSpeaker >= numSpeakers) {
 			currentSpeaker = 0;
 		}
+
+		// if there's a looper, leave it alone!
+		while (leaveAlone[currentSpeaker]) {
+			currentSpeaker++;
+			if (currentSpeaker >= numSpeakers) {
+				currentSpeaker = 0;
+			}
+		}
+
+		return thisSpeaker;
+	}
+
+	public void stopSound(int speakerIndex) {
+		GameObject gameObject = speakers [speakerIndex];
+		gameObject.audio.loop = false;
+		gameObject.audio.Stop ();
+		leaveAlone [speakerIndex] = false;
 	}
 }

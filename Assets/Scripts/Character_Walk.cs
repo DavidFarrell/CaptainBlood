@@ -7,18 +7,20 @@ public class Character_Walk : FSMState {
 	[System.NonSerialized]
 	public PlayerController Parent;
 
-
-	private AudioSource baddieFootsteps;
-
+	public int mySpeaker;
+	private AudioEngine audioEngine;
 
 	// Use this for initialization
 	public override void OnEnter () {
+		audioEngine = Parent.speaker;
+		mySpeaker = audioEngine.playSound (AudioEngine.SOUND_WALKING, true);
 		//Debug.Log( "Entered " + this );
 		Parent.playerAnimator.SetTrigger ("walk");
 
 	}
 
 	public override void OnExit () {
+		audioEngine.stopSound (mySpeaker);
 	//	Debug.Log( "Exited " + this );
 	}
 
@@ -28,7 +30,6 @@ public class Character_Walk : FSMState {
 	//	Parent.LineCasting();
 
 		// audio
-		Parent.playAudioFootsteps ();
 
 
 		//retrieve axis info
@@ -80,6 +81,7 @@ public class Character_Walk : FSMState {
 		}
 		
 		if ( Input.GetButtonDown (Parent.WeaponInput ()) ){
+			Debug.Log("it's a weapon!");
 			Parent.ThrowTrap();	
 		}
 		

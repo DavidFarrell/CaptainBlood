@@ -14,7 +14,7 @@ public class PlayerController : FSMSystem {
 	public Character_Wheel s_wheel;
 
 	public Animator playerAnimator;
-
+	public AudioEngine speaker;
 	
 	public bool facingRight = true;
 	public Poster facedPoster;			//A reference to the poster which the player is in front of. Null if there is not any poster behind the player
@@ -28,17 +28,6 @@ public class PlayerController : FSMSystem {
 
 	public int playerNumber;
 	public Transform playerGrounder;
-
-	// INDEXES INTO AUDIO
-	public static int PLAYER_SOUND_WALKING = 0;
-	public static int PLAYER_SOUND_JUMP = 1;
-	public static int PLAYER_SOUND_LAND = 2;
-	public static int PLAYER_SOUND_TRAP_THROW = 3;
-	public static int PLAYER_SOUND_TRAP_LAND = 4;
-
-
-	public AudioClip[] aClips;
-
 	
 	void Awake(){
 
@@ -173,28 +162,17 @@ public class PlayerController : FSMSystem {
 		Vector2 force = new Vector2( horizAxis * 500.0f, 150.0f ) + rigidbody2D.velocity;
 		newTrap.rigidbody2D.AddForce( force ); 
 		newTrap.rigidbody2D.AddTorque( Random.Range( -25.0f, 25.0f ) );
-		playAudioTrapThrow ();
+		speaker.playSound (AudioEngine.SOUND_TRAP_THROW);
 	}
 
-	public void playAudioFootsteps() {
-		if (!audio.isPlaying) {
-			audio.clip = aClips [PlayerController.PLAYER_SOUND_WALKING];
-			audio.Play ();
-		}
-	}
 
-	public void playAudioTrapThrow(){
-		//audio.clip = aClips [PlayerController.PLAYER_SOUND_TRAP_THROW];
-		//audio.Play ();
-	}
-	
+
 	public void playAudioTrapLand(){
-		audio.clip = aClips [PlayerController.PLAYER_SOUND_TRAP_LAND];
-		audio.Play ();
+
+		speaker.playSound (AudioEngine.SOUND_TRAP_LAND);
 	}
 	
 	public void playAudioJump(){
-		audio.clip = aClips [PlayerController.PLAYER_SOUND_JUMP];
-		audio.Play ();
+		speaker.playSound (AudioEngine.SOUND_JUMP);
 	}
 }

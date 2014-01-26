@@ -13,6 +13,8 @@ public class Character_Jump : FSMState {
 		//Debug.Log( "Entered " + this );
 		Parent.grounded = false;
 		Parent.rigidbody2D.AddForce (Vector2.up * Parent.jumpForce);
+		
+		Parent.playAudioJump ();
 		//Set Animation boolean true
 	}
 
@@ -27,7 +29,6 @@ public class Character_Jump : FSMState {
 		
 		//	Debug.Log( "UPDATING JUMP!!" );
 
-		Parent.playAudioJump ();
 
 		if (Parent.rigidbody2D.velocity.y < 0) {
 			// Are we still in the air?

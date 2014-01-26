@@ -31,9 +31,19 @@ public class Trap : MonoBehaviour {
 		}
 	}
 
+	void OnCollisionEnter2D(Collision2D coll) {
+		Debug.Log ("collide" + coll.gameObject.tag);
+		if (coll.gameObject.tag == "Ground") {
+			owner.playAudioTrapLand ();
+		}
+	}
+
 	void OnTriggerEnter2D( Collider2D coll ) {
 		Debug.Log( "SOMETHING HAS HIT TRAP! - " + coll.name );
-		owner.playAudioTrapLand ();
+		if (coll.transform.tag != "Interactable") {
+			
+
+		}
 		//if ( activated ){
 			if ( coll.gameObject.tag == "Player"){
 			Debug.Log( "HITTING A PLAYER" );

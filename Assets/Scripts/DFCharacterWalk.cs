@@ -77,7 +77,7 @@ public class DFCharacterWalk : FSMState {
 	public override void OnUpdate () {
 		
 		// audio
-		Parent.playAudioFootsteps ();
+		//Parent.playAudioFootsteps ();
 
 		//retrieve axis info
 		Parent.horizAxis = Input.GetAxis(Parent.HorizInput());

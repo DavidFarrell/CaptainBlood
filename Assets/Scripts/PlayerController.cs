@@ -94,8 +94,9 @@ public class PlayerController : FSMSystem {
 
 		//cast 3 rays down the size of half the height of the player, one in centre, one at left edge, one at right edge
 		//bool onGround = false;
-		float dist = transform.GetComponent<BoxCollider2D> ().size.y / 2 + 0.1f ;
-		float width = transform.GetComponent<BoxCollider2D> ().size.x / 2 + 0.02f ;
+		float dist = transform.GetComponent<SpriteRenderer> ().bounds.size.y / 2 + 0.1f;
+	//	float dist = transform.GetComponent<BoxCollider2D> ().size.y / 2 + 0.1f ;
+		float width = transform.GetComponent<SpriteRenderer> ().bounds.size.x / 4 + 0.02f ;
 
 
 		RaycastHit2D[] hits;

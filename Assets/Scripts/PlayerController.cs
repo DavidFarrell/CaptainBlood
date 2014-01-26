@@ -151,7 +151,7 @@ public class PlayerController : FSMSystem {
 	}
 	
 	public void CheckInteraction(){
-		Debug.Log ("Interactionfrom player :" + playerNumber);
+		//Debug.Log ("Interactionfrom player :" + playerNumber);
 		//fire a wee ray out of the player...
 		RaycastHit2D[] hit;
 		if ( !facingRight ){
@@ -164,7 +164,7 @@ public class PlayerController : FSMSystem {
 		
 		bool hadHit = false;
 		for ( int i = 0; i < hit.Length; i++ ){
-			Debug.Log("hit a thing: " + hit[i].transform.name);
+			//Debug.Log("hit a thing: " + hit[i].transform.name);
 			if ( hit[i].transform.tag == "Interactable" ){
 				Debug.Log( "GOT AN INTERACTABLE GAMEOBJECT :" + hit[i].transform.name );
 		

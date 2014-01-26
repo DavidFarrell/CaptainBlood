@@ -16,10 +16,14 @@ public class Character_Walk : FSMState {
 		mySpeaker = audioEngine.playSound (AudioEngine.SOUND_WALKING, true);
 		//Debug.Log( "Entered " + this );
 		Parent.playerAnimator.SetTrigger ("walk");
+		//turn on dust
+		Parent.dust.SetActive (true);
 	}
 
 	public override void OnExit () {
 		audioEngine.stopSound (mySpeaker);
+		//turn off dust
+		Parent.dust.SetActive (false);
 	//	Debug.Log( "Exited " + this );
 	}
 

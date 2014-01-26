@@ -12,6 +12,7 @@ public class PlayerController : FSMSystem {
 	public Character_Stunned s_stun;
 	public Character_Interact s_interact;
 	public Character_Wheel s_wheel;
+	public GameObject dust;
 
 	public bool isGoodie = true;
 

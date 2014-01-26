@@ -20,9 +20,12 @@ public class Character_Falling : FSMState {
 	public override void OnUpdate(){
 		//	Debug.Log( "UPDATING FALL!!" );
 		
-		if (Parent.rigidbody2D.velocity.y < 0) {
-			// Are we still in the air?
-			Parent.LineCasting ();						
+		if (Parent.rigidbody2D.velocity.y <= 0) {
+			// Are we still in the air? If not go idle
+			if (Parent.LineCasting ())
+			{
+				Parent.GoToState (Parent.s_idle);
+			}
 		}
 
 		// interact
@@ -32,9 +35,9 @@ public class Character_Falling : FSMState {
 
 		//retrieve axis info
 		Parent.horizAxis = Input.GetAxis(Parent.HorizInput());
-		if (Parent.grounded) {
-			Parent.GoToState (Parent.s_idle);
-		}
+	//	if (Parent.grounded) {
+	//		Parent.GoToState (Parent.s_idle);
+	//	}
 		Parent.vertAxis = Input.GetAxis(Parent.VertInput());
 		if (Parent.canLadder && (Mathf.Abs (Parent.vertAxis) > 0.1f)) 
 		{

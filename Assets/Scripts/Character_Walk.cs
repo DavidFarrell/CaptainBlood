@@ -13,13 +13,13 @@ public class Character_Walk : FSMState {
 
 	// Use this for initialization
 	public override void OnEnter () {
-		//Debug.Log( "Entered " + this );
+		Debug.Log( "Entered " + this );
 		Parent.playerAnimator.SetTrigger ("walk");
 
 	}
 
 	public override void OnExit () {
-	//	Debug.Log( "Exited " + this );
+		Debug.Log( "Exited " + this );
 	}
 
 	// Update is called once per frame
@@ -52,9 +52,11 @@ public class Character_Walk : FSMState {
 		//<STATE TRANSITIONS>
 		// Jump
 		if (Input.GetButtonDown (Parent.JumpInput ())) {
-			Parent.playAudioJump ();
-			Parent.GoToState( Parent.s_jump );
 
+			if ( Parent.LineCasting() ){
+				Parent.playAudioJump ();
+				Parent.GoToState( Parent.s_jump );
+			}
 
 		}
 

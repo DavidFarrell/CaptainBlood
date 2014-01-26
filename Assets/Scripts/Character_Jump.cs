@@ -10,14 +10,14 @@ public class Character_Jump : FSMState {
 	
 	// Use this for initialization
 	public override void OnEnter () {
-		//Debug.Log( "Entered " + this );
+		Debug.Log( "Entered " + this );
 		Parent.grounded = false;
 		Parent.rigidbody2D.AddForce (Vector2.up * Parent.jumpForce);
 		//Set Animation boolean true
 	}
 
 	public override void OnExit () {
-		//Debug.Log( "Exited " + this );
+		Debug.Log( "Exited " + this );
 		//Set Animation boolean false
 	}
 
@@ -27,24 +27,27 @@ public class Character_Jump : FSMState {
 		
 		//	Debug.Log( "UPDATING JUMP!!" );
 
-		Parent.playAudioJump ();
+	//	Parent.playAudioJump ();
 
-		if (Parent.rigidbody2D.velocity.y < 0) {
+	//	if (Parent.rigidbody2D.velocity.y < 0) {
 			// Are we still in the air?
-			Parent.LineCasting ();						
-		}
+	//		Parent.LineCasting ();						
+	//	}
 
 		//retrieve axis info
 		Parent.horizAxis = Input.GetAxis(Parent.HorizInput());
-		if (Parent.grounded) {
-			Parent.GoToState (Parent.s_idle);
+		//Need to check = 0 also in case we happen to have stopped without noticing
+		if (Parent.rigidbody2D.velocity.y >= 0.0f) {
+				if ( Parent.LineCasting ()) {
+						Parent.GoToState (Parent.s_idle);
+				}
 		}
 
 		Parent.vertAxis = Input.GetAxis(Parent.VertInput());
 		if (Parent.canLadder && (Mathf.Abs (Parent.vertAxis) > 0.1f)) 
 		{
 			Parent.GoToState(Parent.s_ladder);
-		}
+		}   
 
 		// interact
 		if (Input.GetButtonDown (Parent.InteractInput())){

@@ -99,9 +99,65 @@ public class PlayerController : FSMSystem {
 	}
 
 
-	public void LineCasting(){
-		Debug.DrawLine (transform.position, playerGrounder.position, Color.cyan);
-		grounded = Physics2D.Linecast (transform.position, playerGrounder.position, 1 << LayerMask.NameToLayer ("Middleground"));
+	public bool LineCasting(){
+	//	Debug.DrawLine (transform.position, playerGrounder.position, Color.cyan);
+	//	grounded = Physics2D.Linecast (transform.position, playerGrounder.position, 1 << LayerMask.NameToLayer ("Middleground"));
+
+		//cast 3 rays down the size of half the height of the player, one in centre, one at left edge, one at right edge
+		//bool onGround = false;
+		float dist = transform.GetComponent<BoxCollider2D> ().size.y / 2 + 0.1f ;
+		float width = transform.GetComponent<BoxCollider2D> ().size.x / 2 + 0.02f ;
+
+
+		RaycastHit2D[] hits;
+		hits = Physics2D.RaycastAll (transform.position, -Vector2.up, dist);
+		for (int i = 0; i < hits.Length; i++ ){
+		
+			//Debug.Log( "HITS : " + hits[i].transform.tag );
+
+			if ( hits[i].transform.tag == "Middleground" ){
+
+			//	Debug.DrawLine (transform.position, hits[i].point, Color.magenta, 5.0f);
+			//	Debug.Log( "HIT THE GROUND" );
+				return true;
+			}
+		}
+
+		Vector3 leftSide = transform.position + (Vector3.left * width);
+		hits = Physics2D.RaycastAll (leftSide, -Vector2.up, dist);
+		for (int i = 0; i < hits.Length; i++ ){
+			
+			//Debug.Log( "LHITS : " + hits[i].transform.tag );
+			
+			if ( hits[i].transform.tag == "Middleground" ){
+				
+				//Debug.DrawLine (leftSide, hits[i].point, Color.magenta, 5.0f);
+				//Debug.Log( "HIT THE GROUND" );
+				return true;
+			}
+		}
+
+
+		Vector3 rightSide = transform.position + (Vector3.right * width);
+		hits = Physics2D.RaycastAll (rightSide, -Vector2.up, dist);
+		for (int i = 0; i < hits.Length; i++ ){
+			
+			//Debug.Log( "HITS : " + hits[i].transform.tag );
+			
+			if ( hits[i].transform.tag == "Middleground" ){
+				
+				//Debug.DrawLine (rightSide, hits[i].point, Color.green, 5.0f);
+				//Debug.Log( "HIT THE GROUND" );
+				return true;
+			}
+		}
+
+
+
+
+
+
+		return false;
 	}
 	
 	public void CheckInteraction(){

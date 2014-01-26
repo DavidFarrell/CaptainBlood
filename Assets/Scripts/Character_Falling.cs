@@ -39,6 +39,16 @@ public class Character_Falling : FSMState {
 			Parent.ThrowTrap();	
 		}
 
+
+		// If the input is moving the player right and the player is facing left...
+		if( Parent.horizAxis > 0 && !Parent.facingRight){
+			// ... flip the player.
+			Parent.Flip();
+		} else if ( Parent.horizAxis < 0 && Parent.facingRight){
+			// ... flip the player.
+			Parent.Flip();
+		} 
+
 		//retrieve axis info
 		Parent.horizAxis = Input.GetAxis(Parent.HorizInput());
 	//	if (Parent.grounded) {

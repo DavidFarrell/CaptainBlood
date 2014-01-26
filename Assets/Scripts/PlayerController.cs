@@ -252,4 +252,8 @@ public class PlayerController : FSMSystem {
 	public void playAudioGoodiePoster() {
 		speaker.playSound (AudioEngine.SOUND_POSTER_GOODIE);
 	}
+	/*
+	public void playerDies() {
+		GameObject.Find ("GameController").GetComponent <GameController>();
+	}*/
 }

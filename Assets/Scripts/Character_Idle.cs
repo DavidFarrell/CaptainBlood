@@ -9,7 +9,7 @@ public class Character_Idle : FSMState {
 
 	// Use this for initialization
 	public override void OnEnter () {
-		Debug.Log( "Entered " + this );
+		//Debug.Log( "Entered " + this );
 		Parent.playerAnimator.SetTrigger ("idle");
 	}
 	

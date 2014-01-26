@@ -30,30 +30,30 @@ public class Poster : MonoBehaviour {
 
 	public void ChangePoster(int poster){
 		Debug.Log ("poster change" + poster);
+
 		//Changes the poster to display to the one specified on the parameter 'poster'
 		switch (poster){
 		case 0:
 			mySR.sprite = post1;
 			state = 0;
 		break;
-		case 1: 
-
+		case 1:
 			gc.AdjustBlue(1);
 			if ( state == 2 ){
 				gc.AdjustRed( -1 );
 			}
-
+			Vector3 sprayGoodPos = transform.position + Vector3.back;
+			GameObject.Instantiate( Resources.Load("Prefabs/Spray_Good"), sprayGoodPos, Quaternion.identity) ;
 			mySR.sprite = post2;
 			state = 1;
-
 		break;
 		case 2:
-
 			gc.AdjustRed( 1 );
 			if ( state == 1 ){
 				gc.AdjustBlue( -1 );
 			}
-
+			Vector3 sprayBadPos = transform.position + Vector3.back;
+			GameObject.Instantiate( Resources.Load("Prefabs/Spray_Bad"), sprayBadPos, Quaternion.identity) ;
 			mySR.sprite = post3;
 			state = 2;
 		break;

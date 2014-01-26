@@ -14,7 +14,7 @@ public class Character_Walk : FSMState {
 	public override void OnEnter () {
 		audioEngine = Parent.speaker;
 		mySpeaker = audioEngine.playSound (AudioEngine.SOUND_WALKING, true);
-		//Debug.Log( "Entered " + this );
+	//	Debug.Log( "Entered " + this );
 		Parent.playerAnimator.SetTrigger ("walk");
 		//turn on dust
 		//Parent.dust.SetActive (true);
@@ -88,7 +88,7 @@ public class Character_Walk : FSMState {
 		}
 		
 		if ( Input.GetButtonDown (Parent.WeaponInput ()) ){
-			Debug.Log("it's a weapon!");
+		//	Debug.Log("it's a weapon!");
 			Parent.ThrowTrap();	
 		}
 		

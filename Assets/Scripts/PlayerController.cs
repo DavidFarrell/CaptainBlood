@@ -13,6 +13,7 @@ public class PlayerController : FSMSystem {
 	public Character_Interact s_interact;
 	public Character_Wheel s_wheel;
 	public GameObject dust;
+	public GameObject spray;
 
 	public bool isGoodie = true;
 

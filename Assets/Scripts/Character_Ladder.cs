@@ -17,6 +17,8 @@ public class Character_Ladder: FSMState {
 		//Parent.gameObject.GetComponent <Rigidbody2D>().isKinematic = true;
 		gravityScaleBackup = Parent.rigidbody2D.gravityScale;
 		Parent.rigidbody2D.gravityScale = 0;//.isKinematic = true;
+		
+		Parent.playerAnimator.SetTrigger ("climb");
 	}
 	
 	// Use this for initialization

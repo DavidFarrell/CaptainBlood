@@ -16,7 +16,8 @@ public class Character_Wheel : FSMState {
 	// Use this for initialization
 	public override void OnEnter ( ) {
 		//Debug.Log( "Entered " + this );
-
+		
+		Parent.playerAnimator.SetTrigger ("hanging");
 		//	storedVelocity = Parent.rigidbody2D.velocity;
 		Parent.rigidbody2D.isKinematic = true;
 		soundIndex = Parent.speaker.playSound (AudioEngine.SOUND_POSTER_SCARED_SPINNING, true);

@@ -1,0 +1,81 @@
+fileFormatVersion: 2
+guid: 1b5016b6f77f44ca4af41b19ce60697d
+TextureImporter:
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 1024
+  textureSettings:
+    filterMode: -1
+    aniso: 1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: Action Cycle Baddy_0
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 0
+        width: 147
+        height: 197
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: Action Cycle Baddy_1
+      rect:
+        serializedVersion: 2
+        x: 254
+        y: 0
+        width: 146
+        height: 197
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: Action Cycle Baddy_2
+      rect:
+        serializedVersion: 2
+        x: 458
+        y: 0
+        width: 142
+        height: 197
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: Action Cycle Baddy_3
+      rect:
+        serializedVersion: 2
+        x: 654
+        y: 0
+        width: 146
+        height: 197
+      alignment: 0
+      pivot: {x: 0, y: 0}
+  spritePackingTag: 
+  userData: 

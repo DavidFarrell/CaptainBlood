@@ -31,6 +31,7 @@ public class Poster : MonoBehaviour {
 	public void ChangePoster(int poster){
 		Debug.Log ("poster change" + poster);
 
+
 		//Changes the poster to display to the one specified on the parameter 'poster'
 		switch (poster){
 		case 0:

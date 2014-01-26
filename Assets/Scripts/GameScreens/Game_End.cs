@@ -6,6 +6,8 @@ public class Game_End : FSMState  {
 
 	bool playerOneReady;
 	bool playerTwoReady;
+	bool winscreen;
+	int winner;
 
 	[System.NonSerialized]
 	public GameController Parent;
@@ -15,12 +17,11 @@ public class Game_End : FSMState  {
 		Application.LoadLevel ("PostGame");
 		playerOneReady = false;
 		playerTwoReady = false;
-
+		winner = (int) userData;
 		Debug.Log ("Well done player " + userData);
 		//GameObject.Instantiate( Resources.Load("Prefabs/Spray_Bad"), sprayBadPos, Quaternion.identity) ;
-		GameObject.Instantiate( Resources.Load("Prefabs/Win" + userData), Vector3.zero, Quaternion.identity) ;
 
-
+		winscreen = false;
 		int winCondition = (int)userData;
 		//show who wins.
 		if (winCondition == 0) {
@@ -30,7 +31,10 @@ public class Game_End : FSMState  {
 	}
 
 	public override void OnUpdate(){
-
+		if (!winscreen) {
+				GameObject.Instantiate (Resources.Load ("Prefabs/Win" + winner), Vector3.zero, Quaternion.identity);
+			winscreen = true;
+		}
 
 		if (Input.GetButtonDown("Interact1") || Input.GetKeyDown("a")) {	//The a and b buttons ar just for testing
 			playerOneReady = true;

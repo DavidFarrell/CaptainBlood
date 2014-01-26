@@ -10,7 +10,7 @@ public class Character_Jump : FSMState {
 	
 	// Use this for initialization
 	public override void OnEnter () {
-		Debug.Log( "Entered " + this );
+//		Debug.Log( "Entered " + this );
 		Parent.grounded = false;
 		Parent.rigidbody2D.AddForce (Vector2.up * Parent.jumpForce);
 		
@@ -19,10 +19,6 @@ public class Character_Jump : FSMState {
 		//Set Animation boolean true
 	}
 
-	public override void OnExit () {
-		Debug.Log( "Exited " + this );
-		//Set Animation boolean false
-	}
 
 
 	// Update is called once per frame
@@ -80,7 +76,7 @@ public class Character_Jump : FSMState {
 			Parent.Flip();
 		}
 		
-		if ( Input.GetButtonDown("Fire2") ){
+		if ( Input.GetButtonDown (Parent.WeaponInput ()) ){
 			Parent.ThrowTrap();	
 		}
 		

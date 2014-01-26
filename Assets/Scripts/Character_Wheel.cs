@@ -15,7 +15,7 @@ public class Character_Wheel : FSMState {
 	
 	// Use this for initialization
 	public override void OnEnter ( ) {
-		Debug.Log( "Entered " + this );
+		//Debug.Log( "Entered " + this );
 
 		//	storedVelocity = Parent.rigidbody2D.velocity;
 		Parent.rigidbody2D.isKinematic = true;
@@ -25,7 +25,7 @@ public class Character_Wheel : FSMState {
 
 	// Use this for initialization
 	public override void OnExit () {
-		Debug.Log( "Exiting " + this );
+		//Debug.Log( "Exiting " + this );
 		
 		Parent.speaker.stopSound (soundIndex);
 		Parent.speaker.playSound (AudioEngine.SOUND_POSTER_WHOOSH, false);

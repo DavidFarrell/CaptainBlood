@@ -88,16 +88,72 @@ public class PlayerController : FSMSystem {
 	}
 
 
-	public void LineCasting(){
-		Debug.DrawLine (transform.position, playerGrounder.position, Color.cyan);
-		grounded = Physics2D.Linecast (transform.position, playerGrounder.position, 1 << LayerMask.NameToLayer ("Middleground"));
+	public bool LineCasting(){
+	//	Debug.DrawLine (transform.position, playerGrounder.position, Color.cyan);
+	//	grounded = Physics2D.Linecast (transform.position, playerGrounder.position, 1 << LayerMask.NameToLayer ("Middleground"));
+
+		//cast 3 rays down the size of half the height of the player, one in centre, one at left edge, one at right edge
+		//bool onGround = false;
+		float dist = transform.GetComponent<BoxCollider2D> ().size.y / 2 + 0.1f ;
+		float width = transform.GetComponent<BoxCollider2D> ().size.x / 2 + 0.02f ;
+
+
+		RaycastHit2D[] hits;
+		hits = Physics2D.RaycastAll (transform.position, -Vector2.up, dist);
+		for (int i = 0; i < hits.Length; i++ ){
+		
+			//Debug.Log( "HITS : " + hits[i].transform.tag );
+
+			if ( hits[i].transform.tag == "Middleground" ){
+
+			//	Debug.DrawLine (transform.position, hits[i].point, Color.magenta, 5.0f);
+			//	Debug.Log( "HIT THE GROUND" );
+				return true;
+			}
+		}
+
+		Vector3 leftSide = transform.position + (Vector3.left * width);
+		hits = Physics2D.RaycastAll (leftSide, -Vector2.up, dist);
+		for (int i = 0; i < hits.Length; i++ ){
+			
+			//Debug.Log( "LHITS : " + hits[i].transform.tag );
+			
+			if ( hits[i].transform.tag == "Middleground" ){
+				
+				//Debug.DrawLine (leftSide, hits[i].point, Color.magenta, 5.0f);
+				//Debug.Log( "HIT THE GROUND" );
+				return true;
+			}
+		}
+
+
+		Vector3 rightSide = transform.position + (Vector3.right * width);
+		hits = Physics2D.RaycastAll (rightSide, -Vector2.up, dist);
+		for (int i = 0; i < hits.Length; i++ ){
+			
+			//Debug.Log( "HITS : " + hits[i].transform.tag );
+			
+			if ( hits[i].transform.tag == "Middleground" ){
+				
+				//Debug.DrawLine (rightSide, hits[i].point, Color.green, 5.0f);
+				//Debug.Log( "HIT THE GROUND" );
+				return true;
+			}
+		}
+
+
+
+
+
+
+		return false;
 	}
 	
 	public void CheckInteraction(){
-		Debug.Log ("Interaction");
+		Debug.Log ("Interactionfrom player :" + playerNumber);
 		//fire a wee ray out of the player...
 		RaycastHit2D[] hit;
-		if ( horizAxis < 0 ){
+		if ( !facingRight ){
 			hit = Physics2D.RaycastAll( transform.position, Vector3.left, 1.0f );
 			Debug.DrawRay( transform.position, Vector3.left , Color.green, 1.0f );
 		}else{
@@ -110,23 +166,19 @@ public class PlayerController : FSMSystem {
 			Debug.Log("hit a thing: " + hit[i].transform.name);
 			if ( hit[i].transform.tag == "Interactable" ){
 				Debug.Log( "GOT AN INTERACTABLE GAMEOBJECT :" + hit[i].transform.name );
-				
-				//pushable ladder
-				switch( hit[i].transform.name ){
-				case "ladder":
-					hit[i].transform.GetComponent<PushableLadder>().Push( horizAxis );
-					hadHit = true;	
-					break;
-					
-				case "Poster":
+		
+				//POSTER
+				if ( hit[i].transform.GetComponent<Poster>() != null ){
+					Debug.Log( "Hit a poster..." );
 					hit[i].transform.GetComponent<Poster>().ChangePoster( playerNumber );
-					hadHit = true;
-					break;
-				case "wheel":
-					hit[i].transform.GetComponent<Wheel>().Grab( this );
-					hadHit = true;
-					break;
 				}
+
+				//WHEEL
+				if ( hit[i].transform.GetComponent<Wheel>() != null ){
+					Debug.Log( "Hit Wheel" );
+					hit[i].transform.GetComponent<Wheel>().Grab( this );
+				}
+
 			}
 			
 			if ( hadHit ){

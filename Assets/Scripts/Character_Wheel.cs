@@ -10,13 +10,13 @@ public class Character_Wheel : FSMState {
 	private Vector3 vec1;
 	private Vector3 newvec;
 
-	Vector2 storedVelocity;
+//	Vector2 storedVelocity;
 	
 	// Use this for initialization
 	public override void OnEnter ( ) {
 		Debug.Log( "Entered " + this );
 
-			storedVelocity = Parent.rigidbody2D.velocity;
+		//	storedVelocity = Parent.rigidbody2D.velocity;
 			Parent.rigidbody2D.isKinematic = true;
 
 	}

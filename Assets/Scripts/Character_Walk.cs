@@ -16,7 +16,6 @@ public class Character_Walk : FSMState {
 		mySpeaker = audioEngine.playSound (AudioEngine.SOUND_WALKING, true);
 		//Debug.Log( "Entered " + this );
 		Parent.playerAnimator.SetTrigger ("walk");
-
 	}
 
 	public override void OnExit () {
@@ -53,9 +52,11 @@ public class Character_Walk : FSMState {
 		//<STATE TRANSITIONS>
 		// Jump
 		if (Input.GetButtonDown (Parent.JumpInput ())) {
-			Parent.playAudioJump ();
-			Parent.GoToState( Parent.s_jump );
 
+			if ( Parent.LineCasting() ){
+				Parent.playAudioJump ();
+				Parent.GoToState( Parent.s_jump );
+			}
 
 		}
 

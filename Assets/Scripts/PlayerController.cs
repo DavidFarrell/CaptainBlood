@@ -161,10 +161,10 @@ public class PlayerController : FSMSystem {
 	}
 	
 	public void CheckInteraction(){
-		Debug.Log ("Interaction");
+		Debug.Log ("Interactionfrom player :" + playerNumber);
 		//fire a wee ray out of the player...
 		RaycastHit2D[] hit;
-		if ( horizAxis < 0 ){
+		if ( !facingRight ){
 			hit = Physics2D.RaycastAll( transform.position, Vector3.left, 1.0f );
 			Debug.DrawRay( transform.position, Vector3.left , Color.green, 1.0f );
 		}else{
@@ -177,23 +177,19 @@ public class PlayerController : FSMSystem {
 			Debug.Log("hit a thing: " + hit[i].transform.name);
 			if ( hit[i].transform.tag == "Interactable" ){
 				Debug.Log( "GOT AN INTERACTABLE GAMEOBJECT :" + hit[i].transform.name );
-				
-				//pushable ladder
-				switch( hit[i].transform.name ){
-				case "ladder":
-					hit[i].transform.GetComponent<PushableLadder>().Push( horizAxis );
-					hadHit = true;	
-					break;
-					
-				case "Poster":
+		
+				//POSTER
+				if ( hit[i].transform.GetComponent<Poster>() != null ){
+					Debug.Log( "Hit a poster..." );
 					hit[i].transform.GetComponent<Poster>().ChangePoster( playerNumber );
-					hadHit = true;
-					break;
-				case "wheel":
-					hit[i].transform.GetComponent<Wheel>().Grab( this );
-					hadHit = true;
-					break;
 				}
+
+				//WHEEL
+				if ( hit[i].transform.GetComponent<Wheel>() != null ){
+					Debug.Log( "Hit Wheel" );
+					hit[i].transform.GetComponent<Wheel>().Grab( this );
+				}
+
 			}
 			
 			if ( hadHit ){

@@ -17,13 +17,15 @@ public class Character_Walk : FSMState {
 		//Debug.Log( "Entered " + this );
 		Parent.playerAnimator.SetTrigger ("walk");
 		//turn on dust
-		Parent.dust.SetActive (true);
+		//Parent.dust.SetActive (true);
+		Parent.dust.particleSystem.emissionRate = 5;
 	}
 
 	public override void OnExit () {
 		audioEngine.stopSound (mySpeaker);
 		//turn off dust
-		Parent.dust.SetActive (false);
+		//Parent.dust.SetActive (false);
+		Parent.dust.particleSystem.emissionRate = 0;
 	//	Debug.Log( "Exited " + this );
 	}
 

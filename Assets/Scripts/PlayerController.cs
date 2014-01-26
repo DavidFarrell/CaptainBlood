@@ -103,7 +103,7 @@ public class PlayerController : FSMSystem {
 		//bool onGround = false;
 		float dist = transform.GetComponent<CircleCollider2D> ().radius + 0.1f;
 	//	float dist = transform.GetComponent<BoxCollider2D> ().size.y / 2 + 0.1f ;
-		float width = transform.GetComponent<SpriteRenderer> ().bounds.size.x / 4 + 0.02f ;
+		float width = transform.GetComponent<CircleCollider2D> ().radius/2 + 0.02f ;
 
 		Vector3 posDF = transform.position + new Vector3(transform.GetComponent<CircleCollider2D> ().center.x, transform.GetComponent<CircleCollider2D> ().center.y, 0);
 
@@ -133,7 +133,7 @@ public class PlayerController : FSMSystem {
 
 		}
 
-		/*Vector3 leftSide = transform.position + (Vector3.left * width);
+		Vector3 leftSide = posDF + (Vector3.left * width);
 		hits = Physics2D.RaycastAll (leftSide, -Vector2.up, dist);
 		for (int i = 0; i < hits.Length; i++ ){
 			
@@ -141,14 +141,14 @@ public class PlayerController : FSMSystem {
 			
 			if ( hits[i].transform.tag == "Middleground" ){
 				
-				//Debug.DrawLine (leftSide, hits[i].point, Color.magenta, 5.0f);
+				Debug.DrawLine (leftSide, hits[i].point, Color.magenta, 5.0f);
 				//Debug.Log( "HIT THE GROUND" );
 				return true;
 			}
 		}
 
 
-		Vector3 rightSide = transform.position + (Vector3.right * width);
+		Vector3 rightSide = posDF + (Vector3.right * width);
 		hits = Physics2D.RaycastAll (rightSide, -Vector2.up, dist);
 		for (int i = 0; i < hits.Length; i++ ){
 			
@@ -156,11 +156,11 @@ public class PlayerController : FSMSystem {
 			
 			if ( hits[i].transform.tag == "Middleground" ){
 				
-				//Debug.DrawLine (rightSide, hits[i].point, Color.green, 5.0f);
+				Debug.DrawLine (rightSide, hits[i].point, Color.green, 5.0f);
 				//Debug.Log( "HIT THE GROUND" );
 				return true;
 			}
-		}*/
+		}
 
 
 

@@ -30,6 +30,9 @@ public class PlayerController : FSMSystem {
 
 	public int playerNumber;
 	public Transform playerGrounder;
+
+	public GameObject heldWeapon;
+	public int weaponRemaining = 0;
 	
 	void Awake(){
 
@@ -170,24 +173,25 @@ public class PlayerController : FSMSystem {
 			if ( hit[i].transform.tag == "Interactable" ){
 				Debug.Log( "GOT AN INTERACTABLE GAMEOBJECT :" + hit[i].transform.name );
 		
-				//POSTER
-				if ( hit[i].transform.GetComponent<Poster>() != null ){
-					Debug.Log( "Hit a poster..."  );
+
+
+				switch ( hit[i].transform.name ){
+				
+				case "Poster":
 					hit[i].transform.GetComponent<Poster>().ChangePoster( playerNumber );
 					if (!isGoodie) {
 						playAudioBaddiePoster();
 					} else {
 						playAudioGoodiePoster();
 					}
+				
+					break;
 
-				}
 
-				//WHEEL
-				if ( hit[i].transform.GetComponent<Wheel>() != null ){
-					Debug.Log( "Hit Wheel" );
+				case "wheel":
 					hit[i].transform.GetComponent<Wheel>().Grab( this );
-				}
-
+					break;
+				};
 			}
 			
 			if ( hadHit ){
@@ -217,17 +221,21 @@ public class PlayerController : FSMSystem {
 
 	
 	public void ThrowTrap(){
-		GameObject newTrap = GameObject.Instantiate( Resources.Load( "Trap" ), transform.position, Quaternion.identity ) as GameObject;
-		newTrap.GetComponent<Trap>().owner = this;
-		newTrap.layer = gameObject.layer;
-		Vector2 force = new Vector2( horizAxis * 500.0f, 150.0f ) + rigidbody2D.velocity;
-		newTrap.rigidbody2D.AddForce( force ); 
-		newTrap.rigidbody2D.AddTorque( Random.Range( -25.0f, 25.0f ) );
-		speaker.playSound (AudioEngine.SOUND_TRAP_THROW);
+		if (heldWeapon != null) {
+			GameObject newTrap = GameObject.Instantiate ( heldWeapon, transform.position, Quaternion.identity) as GameObject;
+			newTrap.GetComponent<Trap> ().owner = this;
+			newTrap.layer = gameObject.layer;
+			Vector2 force = new Vector2 (horizAxis * 500.0f, 150.0f) + rigidbody2D.velocity;
+			newTrap.rigidbody2D.AddForce (force); 
+			newTrap.rigidbody2D.AddTorque (Random.Range (-25.0f, 25.0f));
+			speaker.playSound (AudioEngine.SOUND_TRAP_THROW);
+			weaponRemaining--;
+			if ( weaponRemaining == 0 ){
+				heldWeapon = null;
+			}
+		}
 	}
-
-
-
+	
 	public void playAudioTrapLand(){
 
 		speaker.playSound (AudioEngine.SOUND_TRAP_LAND);

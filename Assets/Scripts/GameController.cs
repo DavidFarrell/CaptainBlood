@@ -10,12 +10,17 @@ public class GameController : FSMSystem {
 	public Game_Level_1 g_level_one;
 	public Game_End g_end;
 
+
 	public int currentLevel = 1;
+	public int numberOfLevels = 2;
 
 	public int maxPosters = 3;
 
 	public int redTotal = 0;
 	public int blueTotal = 0;
+
+	public int redWins = 0;
+	public int blueWins = 0;
 
 	void Awake(){
 
@@ -63,14 +68,25 @@ public class GameController : FSMSystem {
 		}
 	}*/
 
+	public void resetGames(){
+		currentLevel = 1;
+		redTotal = 0;
+		blueTotal = 0;
+		redWins = 0;
+		blueWins = 0;
+	}
+
 	public void AdjustRed( int red ){
 		
 		redTotal += red;
 		
-		Debug.Log( "RED TOTAL: " + redTotal );
+		Debug.Log( "RED TOTAL: " + redTotal + " out of " + maxPosters );
 		
 		if ( redTotal == maxPosters ){
-			GoToState( g_end );
+			blueTotal = 0;
+			redTotal = 0; 
+			redWins ++;
+			GoToState( g_end, 2 );
 		}
 	}
 	
@@ -78,10 +94,13 @@ public class GameController : FSMSystem {
 		
 		blueTotal += blue;
 		
-		Debug.Log( "BLUE TOTAL: " + blueTotal );
+		Debug.Log( "BLUE TOTAL: " + blueTotal + " out of " + maxPosters +( blueTotal == maxPosters));
 		
 		if ( blueTotal == maxPosters ){
-			GoToState( g_end );
+			blueTotal = 0;
+			redTotal = 0;
+			blueWins++;
+			GoToState( g_end, 1 );
 		}
 	}
 

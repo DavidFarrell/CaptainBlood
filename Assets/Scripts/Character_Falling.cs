@@ -10,6 +10,8 @@ public class Character_Falling : FSMState {
 	// Use this for initialization
 	public override void OnEnter () {
 		Debug.Log( "Entered " + this );
+		
+		Parent.playerAnimator.SetTrigger ("fall");
 	}
 	
 	// Use this for initialization

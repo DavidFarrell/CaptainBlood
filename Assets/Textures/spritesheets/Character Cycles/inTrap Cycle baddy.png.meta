@@ -1,0 +1,117 @@
+fileFormatVersion: 2
+guid: 627c73b4708994f9b90888bb27514683
+TextureImporter:
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 1024
+  textureSettings:
+    filterMode: -1
+    aniso: 1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: inTrap Cycle baddy_0
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 0
+        width: 149
+        height: 187
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: inTrap Cycle baddy_1
+      rect:
+        serializedVersion: 2
+        x: 230
+        y: 1
+        width: 152
+        height: 187
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: inTrap Cycle baddy_2
+      rect:
+        serializedVersion: 2
+        x: 432
+        y: 0
+        width: 150
+        height: 190
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: inTrap Cycle baddy_3
+      rect:
+        serializedVersion: 2
+        x: 631
+        y: 0
+        width: 149
+        height: 189
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: inTrap Cycle baddy_4
+      rect:
+        serializedVersion: 2
+        x: 830
+        y: 0
+        width: 151
+        height: 191
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: inTrap Cycle baddy_5
+      rect:
+        serializedVersion: 2
+        x: 1031
+        y: 0
+        width: 151
+        height: 191
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: inTrap Cycle baddy_6
+      rect:
+        serializedVersion: 2
+        x: 1234
+        y: 0
+        width: 150
+        height: 190
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: inTrap Cycle baddy_7
+      rect:
+        serializedVersion: 2
+        x: 1431
+        y: 0
+        width: 151
+        height: 193
+      alignment: 0
+      pivot: {x: 0, y: 0}
+  spritePackingTag: 
+  userData: 

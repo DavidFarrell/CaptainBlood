@@ -14,6 +14,8 @@ public class Character_Stunned : FSMState {
 
 	// Use this for initialization
 	public override void OnEnter ( object userData ) {
+		
+		Parent.playerAnimator.SetTrigger ("trap");
 		Debug.Log( "Entered " + this );
 
 		stunDuration = (float)userData;

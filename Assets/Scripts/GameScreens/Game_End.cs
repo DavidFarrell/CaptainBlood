@@ -13,7 +13,9 @@ public class Game_End : FSMState  {
 	public override void OnEnter( object userData ){
 		Debug.Log( "Entered " + this );
 		Application.LoadLevel ("PostGame");
-
+		playerOneReady = false;
+		playerTwoReady = false;
+		Debug.Log ("Well done player " + userData);
 		int winCondition = (int)userData;
 		//show who wins.
 		if (winCondition == 0) {
@@ -24,9 +26,26 @@ public class Game_End : FSMState  {
 
 	public override void OnUpdate(){
 
-		if ( playerOneReady && playerTwoReady ){
 
-			//go to next level...
+		if (Input.GetButtonDown("Interact1") || Input.GetKeyDown("a")) {	//The a and b buttons ar just for testing
+			playerOneReady = true;
+		}
+		if (Input.GetButtonDown("Interact2") || Input.GetKeyDown("b")) {
+			playerTwoReady = true;
+		}
+		if ( playerOneReady && playerTwoReady  ){
+			if (Parent.currentLevel < Parent.numberOfLevels){
+				//go to next level...
+				Parent.currentLevel = Parent.currentLevel + 1;
+				Parent.GoToState(Parent.g_level_one);
+				Application.LoadLevel("Level" + Parent.currentLevel);
+			}
+			else{
+				Parent.resetGames();
+				Parent.GoToState(Parent.g_menu);
+				Application.LoadLevel("MainMenu");
+
+			}
 
 		}
 	}

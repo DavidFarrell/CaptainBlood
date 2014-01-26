@@ -194,6 +194,8 @@ public class PlayerController : FSMSystem {
 				switch ( hit[i].transform.name ){
 				
 				case "Poster":
+					
+					playerAnimator.SetTrigger ("poster");
 					hit[i].transform.GetComponent<Poster>().ChangePoster( playerNumber );
 					if (!isGoodie) {
 						playAudioBaddiePoster();

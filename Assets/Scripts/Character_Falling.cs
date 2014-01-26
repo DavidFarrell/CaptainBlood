@@ -20,13 +20,13 @@ public class Character_Falling : FSMState {
 	public override void OnUpdate(){
 		//	Debug.Log( "UPDATING FALL!!" );
 		
-		if (Parent.rigidbody2D.velocity.y <= 0) {
+		//if (Parent.rigidbody2D.velocity.y <= 0) {
 			// Are we still in the air? If not go idle
 			if (Parent.LineCasting ())
 			{
 				Parent.GoToState (Parent.s_idle);
 			}
-		}
+		//}
 
 		// interact
 		if (Input.GetButtonDown (Parent.InteractInput())){

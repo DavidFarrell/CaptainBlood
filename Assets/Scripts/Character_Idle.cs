@@ -20,6 +20,7 @@ public class Character_Idle : FSMState {
 
 		// jump
 		if (Input.GetButtonDown (Parent.JumpInput())) {
+			Debug.Log("are we touching in idle? " + Parent.LineCasting());
 			if ( Parent.LineCasting() ){
 				Parent.GoToState( Parent.s_jump );
 			}

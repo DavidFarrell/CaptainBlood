@@ -95,25 +95,31 @@ public class PlayerController : FSMSystem {
 
 
 	public bool LineCasting(){
+
 	//	Debug.DrawLine (transform.position, playerGrounder.position, Color.cyan);
 	//	grounded = Physics2D.Linecast (transform.position, playerGrounder.position, 1 << LayerMask.NameToLayer ("Middleground"));
 
 		//cast 3 rays down the size of half the height of the player, one in centre, one at left edge, one at right edge
 		//bool onGround = false;
-		float dist = transform.GetComponent<SpriteRenderer> ().bounds.size.y / 2 + 0.1f;
+		float dist = transform.GetComponent<CircleCollider2D> ().radius + 0.1f;
 	//	float dist = transform.GetComponent<BoxCollider2D> ().size.y / 2 + 0.1f ;
 		float width = transform.GetComponent<SpriteRenderer> ().bounds.size.x / 4 + 0.02f ;
 
+		Vector3 posDF = transform.position + new Vector3(transform.GetComponent<CircleCollider2D> ().center.x, transform.GetComponent<CircleCollider2D> ().center.y, 0);
+
+		//Debug.DrawRay (posDF, -Vector2.up, Color.magenta, dist);
 
 		RaycastHit2D[] hits;
-		hits = Physics2D.RaycastAll (transform.position, -Vector2.up, dist);
+
+		hits = Physics2D.RaycastAll (posDF, -Vector2.up, dist);
 		for (int i = 0; i < hits.Length; i++ ){
-		
+		//	Debug.DrawLine (transform.GetComponent<CircleCollider2D> ().center, hits[i].point, Color.magenta, 5.0f);
+
 			//Debug.Log( "HITS : " + hits[i].transform.tag );
 
 			if ( hits[i].transform.tag == "Middleground" ){
 
-			//	Debug.DrawLine (transform.position, hits[i].point, Color.magenta, 5.0f);
+				//Debug.DrawLine (transform.GetComponent<CircleCollider2D> ().center, hits[i].point, Color.magenta, 5.0f);
 			//	Debug.Log( "HIT THE GROUND" );
 				return true;
 			}
@@ -127,7 +133,7 @@ public class PlayerController : FSMSystem {
 
 		}
 
-		Vector3 leftSide = transform.position + (Vector3.left * width);
+		/*Vector3 leftSide = transform.position + (Vector3.left * width);
 		hits = Physics2D.RaycastAll (leftSide, -Vector2.up, dist);
 		for (int i = 0; i < hits.Length; i++ ){
 			
@@ -154,7 +160,7 @@ public class PlayerController : FSMSystem {
 				//Debug.Log( "HIT THE GROUND" );
 				return true;
 			}
-		}
+		}*/
 
 
 

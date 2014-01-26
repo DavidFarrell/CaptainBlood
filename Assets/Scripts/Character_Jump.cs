@@ -15,6 +15,7 @@ public class Character_Jump : FSMState {
 		Parent.rigidbody2D.AddForce (Vector2.up * Parent.jumpForce);
 		
 		Parent.playAudioJump ();
+		Parent.playerAnimator.SetTrigger ("jump");
 		//Set Animation boolean true
 	}
 

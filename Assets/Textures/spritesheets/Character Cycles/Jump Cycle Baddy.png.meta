@@ -24,13 +24,13 @@ TextureImporter:
   maxTextureSize: 1024
   textureSettings:
     filterMode: -1
-    aniso: -1
+    aniso: 1
     mipBias: -1
-    wrapMode: -1
+    wrapMode: 1
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -40,6 +40,123 @@ TextureImporter:
   textureType: 8
   buildTargetSettings: []
   spriteSheet:
-    sprites: []
+    sprites:
+    - name: Jump Cycle Baddy_0
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 0
+        width: 99
+        height: 199
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: Jump Cycle Baddy_1
+      rect:
+        serializedVersion: 2
+        x: 245
+        y: 0
+        width: 104
+        height: 194
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: Jump Cycle Baddy_2
+      rect:
+        serializedVersion: 2
+        x: 443
+        y: 0
+        width: 107
+        height: 188
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: Jump Cycle Baddy_3
+      rect:
+        serializedVersion: 2
+        x: 654
+        y: 0
+        width: 96
+        height: 181
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: Jump Cycle Baddy_4
+      rect:
+        serializedVersion: 2
+        x: 847
+        y: 0
+        width: 104
+        height: 176
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: Jump Cycle Baddy_5
+      rect:
+        serializedVersion: 2
+        x: 1055
+        y: 0
+        width: 94
+        height: 181
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: Jump Cycle Baddy_6
+      rect:
+        serializedVersion: 2
+        x: 1245
+        y: 0
+        width: 105
+        height: 188
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: Jump Cycle Baddy_7
+      rect:
+        serializedVersion: 2
+        x: 1446
+        y: 0
+        width: 104
+        height: 194
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: Jump Cycle Baddy_8
+      rect:
+        serializedVersion: 2
+        x: 1652
+        y: 0
+        width: 99
+        height: 199
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: Jump Cycle Baddy_9
+      rect:
+        serializedVersion: 2
+        x: 1845
+        y: 0
+        width: 104
+        height: 199
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: Jump Cycle Baddy_10
+      rect:
+        serializedVersion: 2
+        x: 2045
+        y: 14
+        width: 107
+        height: 185
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: Jump Cycle Baddy_11
+      rect:
+        serializedVersion: 2
+        x: 2266
+        y: 14
+        width: 86
+        height: 185
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: Jump Cycle Baddy_12
+      rect:
+        serializedVersion: 2
+        x: 2467
+        y: 19
+        width: 85
+        height: 180
+      alignment: 0
+      pivot: {x: 0, y: 0}
   spritePackingTag: 
   userData: 

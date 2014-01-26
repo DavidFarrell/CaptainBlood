@@ -15,7 +15,12 @@ public class Game_End : FSMState  {
 		Application.LoadLevel ("PostGame");
 		playerOneReady = false;
 		playerTwoReady = false;
+
 		Debug.Log ("Well done player " + userData);
+		//GameObject.Instantiate( Resources.Load("Prefabs/Spray_Bad"), sprayBadPos, Quaternion.identity) ;
+		GameObject.Instantiate( Resources.Load("Prefabs/Win" + userData), Vector3.zero, Quaternion.identity) ;
+
+
 		int winCondition = (int)userData;
 		//show who wins.
 		if (winCondition == 0) {

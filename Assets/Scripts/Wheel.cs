@@ -5,7 +5,8 @@ public class Wheel : MonoBehaviour {
 	
 	PlayerController pc;
 	//CircleCollider2D circle;
-
+	
+	public float wheelChuck;
 
 
 	void Update () {

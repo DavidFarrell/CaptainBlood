@@ -10,6 +10,7 @@ public class Character_Wheel : FSMState {
 	private Vector3 vec1;
 	private Vector3 newvec;
 
+
 //	Vector2 storedVelocity;
 	
 	// Use this for initialization
@@ -24,7 +25,7 @@ public class Character_Wheel : FSMState {
 	// Use this for initialization
 	public override void OnExit () {
 		Debug.Log( "Exiting " + this );
-
+		Wheel wheel = Parent.transform.parent.GetComponent<Wheel>();
 
 
 		Parent.rigidbody2D.isKinematic = false;
@@ -32,7 +33,7 @@ public class Character_Wheel : FSMState {
 		vec1 =  Parent.transform.parent.position - Parent.transform.position;
 		newvec = Vector3.Cross (vec1, Vector3.forward);
 		newvec.Normalize();
-		Parent.rigidbody2D.velocity = newvec *10;
+		Parent.rigidbody2D.velocity = newvec * wheel.wheelChuck;
 		Parent.transform.parent = null;
 		//Parent.rigidbody2D.velocity = storedVelocity;
 	}

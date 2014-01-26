@@ -10,7 +10,7 @@ public class Character_Wheel : FSMState {
 	private Vector3 vec1;
 	private Vector3 newvec;
 
-	private int soundIndex;
+	public int soundIndex;
 //	Vector2 storedVelocity;
 	
 	// Use this for initialization

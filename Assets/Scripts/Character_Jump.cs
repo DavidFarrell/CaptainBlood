@@ -37,7 +37,10 @@ public class Character_Jump : FSMState {
 		//Need to check = 0 also in case we happen to have stopped without noticing
 		if (Parent.rigidbody2D.velocity.y >= 0.0f) {
 				if ( Parent.LineCasting ()) {
-						Parent.GoToState (Parent.s_idle);
+				
+					Debug.Log("landing?");
+					Parent.speaker.playSound(AudioEngine.SOUND_POSTER_LAND_NOISE);
+					Parent.GoToState (Parent.s_idle);
 				}
 		}
 

@@ -24,6 +24,8 @@ public class Character_Falling : FSMState {
 			// Are we still in the air? If not go idle
 			if (Parent.LineCasting ())
 			{
+				Debug.Log("landing?");
+				Parent.speaker.playSound(AudioEngine.SOUND_POSTER_LAND_NOISE);
 				Parent.GoToState (Parent.s_idle);
 			}
 		//}

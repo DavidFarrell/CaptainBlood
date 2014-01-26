@@ -13,6 +13,8 @@ public class PlayerController : FSMSystem {
 	public Character_Interact s_interact;
 	public Character_Wheel s_wheel;
 
+	public bool isGoodie = true;
+
 	public Animator playerAnimator;
 	public AudioEngine speaker;
 	
@@ -170,8 +172,14 @@ public class PlayerController : FSMSystem {
 		
 				//POSTER
 				if ( hit[i].transform.GetComponent<Poster>() != null ){
-					Debug.Log( "Hit a poster..." );
+					Debug.Log( "Hit a poster..."  );
 					hit[i].transform.GetComponent<Poster>().ChangePoster( playerNumber );
+					if (!isGoodie) {
+						playAudioBaddiePoster();
+					} else {
+						playAudioGoodiePoster();
+					}
+
 				}
 
 				//WHEEL
@@ -227,5 +235,13 @@ public class PlayerController : FSMSystem {
 	
 	public void playAudioJump(){
 		speaker.playSound (AudioEngine.SOUND_JUMP);
+	}
+	
+	public void playAudioBaddiePoster() {
+		speaker.playSound (AudioEngine.SOUND_POSTER_BADDIE);
+	}
+	
+	public void playAudioGoodiePoster() {
+		speaker.playSound (AudioEngine.SOUND_POSTER_GOODIE);
 	}
 }

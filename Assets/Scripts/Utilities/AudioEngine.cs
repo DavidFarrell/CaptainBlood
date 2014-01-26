@@ -10,8 +10,8 @@ public class AudioEngine : MonoBehaviour {
 	public static int SOUND_LAND = 2;
 	public static int SOUND_TRAP_THROW = 3;
 	public static int SOUND_TRAP_LAND = 4;
-	public static int SOUND_POSTER_POST = 5;
-	public static int SOUND_POSTER_SPRAY = 6;
+	public static int SOUND_POSTER_BADDIE = 5;
+	public static int SOUND_POSTER_GOODIE = 6;
 	
 	public GameObject[] speakers;
 	public AudioClip[] sounds;

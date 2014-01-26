@@ -10,9 +10,16 @@ public class GameController : FSMSystem {
 	public Game_Level_1 g_level_one;
 	public Game_End g_end;
 
+	public int currentLevel = 1;
+
+	public int maxPosters = 3;
+
+	public int redTotal = 0;
+	public int blueTotal = 0;
+
 	void Awake(){
 
-		DontDestroyOnLoad(transform.gameObject);	//This will make this object survive between scenes
+		DontDestroyOnLoad( gameObject );	//This will make this object survive between scenes
 
 		AddState( g_menu );
 		g_menu.Parent = this;
@@ -29,7 +36,7 @@ public class GameController : FSMSystem {
 		//goto first default state
 		GoToState( g_splash );
 	}
-
+	/*
 	public void NextLevel(){
 		//This function has to be called at the end of each level, to go to the following level or end the game.
 		Debug.Log ("NextLevel(): " + this.CurrentState.ToString());
@@ -54,7 +61,28 @@ public class GameController : FSMSystem {
 			Debug.Log ("GameController: Name of level not found!");
 			break;
 		}
-	}
+	}*/
 
+	public void AdjustRed( int red ){
+		
+		redTotal += red;
+		
+		Debug.Log( "RED TOTAL: " + redTotal );
+		
+		if ( redTotal == maxPosters ){
+			GoToState( g_end );
+		}
+	}
+	
+	public void AdjustBlue( int blue ){
+		
+		blueTotal += blue;
+		
+		Debug.Log( "BLUE TOTAL: " + blueTotal );
+		
+		if ( blueTotal == maxPosters ){
+			GoToState( g_end );
+		}
+	}
 
 }

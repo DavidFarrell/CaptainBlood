@@ -7,20 +7,24 @@ public class Poster : MonoBehaviour {
 	public Sprite post2;
 	public Sprite post3;
 	
-	private int state;
+	private int state = 0;
 	
 	private SpriteRenderer mySR;
 	private PlayerController pc;
 
+	GameController gc;
+
 	// Use this for initialization
 	void Start () {
-		state = 0;
 		mySR = gameObject.GetComponent<SpriteRenderer>();
 		//testPoster();
 	}
 	
 	// Update is called once per frame
 	void Update () {
+		if ( gc == null ){
+			gc = GameObject.FindGameObjectWithTag( "GameController" ).GetComponent<GameController>();
+		}
 	
 	}
 
@@ -33,10 +37,23 @@ public class Poster : MonoBehaviour {
 			state = 0;
 		break;
 		case 1: 
+
+			gc.AdjustBlue(1);
+			if ( state == 2 ){
+				gc.AdjustRed( -1 );
+			}
+
 			mySR.sprite = post2;
 			state = 1;
+
 		break;
-		case 2: 
+		case 2:
+
+			gc.AdjustRed( 1 );
+			if ( state == 1 ){
+				gc.AdjustBlue( -1 );
+			}
+
 			mySR.sprite = post3;
 			state = 2;
 		break;

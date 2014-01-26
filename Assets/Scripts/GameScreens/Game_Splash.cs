@@ -30,7 +30,9 @@ public class Game_Splash : FSMState {
 
 		if(Input.anyKeyDown){
 			Debug.Log ("Splash: going to the next Level");
-			Parent.NextLevel();
+			//Parent.NextLevel();
+			Parent.GoToState(Parent.g_menu);
+			Application.LoadLevel("MainMenu");
 		}
 	}
 

@@ -33,6 +33,10 @@ public class Character_Falling : FSMState {
 			Parent.CheckInteraction();
 		}
 
+		if ( Input.GetButtonDown (Parent.WeaponInput ()) ){
+			Parent.ThrowTrap();	
+		}
+
 		//retrieve axis info
 		Parent.horizAxis = Input.GetAxis(Parent.HorizInput());
 	//	if (Parent.grounded) {

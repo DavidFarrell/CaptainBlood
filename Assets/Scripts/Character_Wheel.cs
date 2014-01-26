@@ -40,7 +40,8 @@ public class Character_Wheel : FSMState {
 	
 	public override void OnUpdate(){
 		//Cancel out the wheel rotation
-		Parent.transform.Rotate (0.0f, 0.0f, -1.0f);
+
+		Parent.transform.Rotate (0.0f, 0.0f, -Parent.transform.parent.GetComponent<Wheel>().rotationSpeed);
 
 		if (Input.GetButton (Parent.InteractInput ()) == false) {
 

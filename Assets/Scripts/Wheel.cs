@@ -7,10 +7,10 @@ public class Wheel : MonoBehaviour {
 	//CircleCollider2D circle;
 	
 	public float wheelChuck;
-
+	public float rotationSpeed;
 
 	void Update () {
-		transform.Rotate (0.0f, 0.0f, 1.0f);
+		transform.Rotate (0.0f, 0.0f, rotationSpeed);
 
 	}
 

@@ -16,7 +16,7 @@ public class Wheel : MonoBehaviour {
 	}
 
 	void Start() {
-		//soundIndex = speaker.playSound (AudioEngine.SOUND_POSTER_SKY_REEL, true);
+		soundIndex = speaker.playSound (AudioEngine.SOUND_POSTER_SKY_REEL, true);
 	}
 
 /*	public void OnTriggerEnter2D(Collider2D other) {

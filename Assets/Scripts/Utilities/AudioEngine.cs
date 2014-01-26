@@ -12,13 +12,15 @@ public class AudioEngine : MonoBehaviour {
 	public static int SOUND_TRAP_LAND = 4;
 	public static int SOUND_POSTER_BADDIE = 5;
 	public static int SOUND_POSTER_GOODIE = 6;
-	public static int SOUND_POSTER_HEAD_BOP = 7;
+	public static int SOUND_POSTER_STUN = 7;
 	public static int SOUND_POSTER_LADDER_WHEELS = 8;
 	public static int SOUND_POSTER_LAND_NOISE = 9;
 	public static int SOUND_POSTER_PINBALL = 10;
 	public static int SOUND_POSTER_SCARED_SPINNING=12;
 	public static int SOUND_POSTER_SKY_REEL = 11;
 	public static int SOUND_POSTER_WHOOSH = 13;
+	public static int SOUND_POSTER_LADDER = 14;
+	public static int SOUND_POSTER_ATTRACT_MODE = 15;
 	
 	public GameObject[] speakers;
 	public AudioClip[] sounds;

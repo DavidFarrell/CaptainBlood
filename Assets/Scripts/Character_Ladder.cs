@@ -17,7 +17,7 @@ public class Character_Ladder: FSMState {
 		//Parent.gameObject.GetComponent <Rigidbody2D>().isKinematic = true;
 		gravityScaleBackup = Parent.rigidbody2D.gravityScale;
 		Parent.rigidbody2D.gravityScale = 0;//.isKinematic = true;
-		
+		Parent.playAudioLadder ();
 		Parent.playerAnimator.SetTrigger ("climb");
 	}
 	
@@ -26,6 +26,8 @@ public class Character_Ladder: FSMState {
 		Debug.Log( "Exiting " + this );
 		//Parent.gameObject.GetComponent <Rigidbody2D>().isKinematic = false;
 		Parent.rigidbody2D.gravityScale = gravityScaleBackup;//.isKinematic = false;
+		Parent.stopAudioLadder ();
+
 	}
 
 	public override void OnUpdate(){

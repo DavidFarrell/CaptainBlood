@@ -23,6 +23,8 @@ public class Character_Stunned : FSMState {
 
 		storedVelocity = Parent.rigidbody2D.velocity;
 		Parent.rigidbody2D.isKinematic = true;
+
+		Parent.playAudioStun ();
 	}
 
 	// Use this for initialization

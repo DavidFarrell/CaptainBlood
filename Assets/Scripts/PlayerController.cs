@@ -17,6 +17,8 @@ public class PlayerController : FSMSystem {
 
 	public bool isGoodie = true;
 
+	public int DFhackLadder;
+
 	public Animator playerAnimator;
 	public AudioEngine speaker;
 	
@@ -262,6 +264,17 @@ public class PlayerController : FSMSystem {
 		speaker.playSound (AudioEngine.SOUND_JUMP);
 	}
 	
+	
+	public void playAudioLadder(){
+		DFhackLadder = speaker.playSound (AudioEngine.SOUND_POSTER_LADDER, true);
+	}
+	public void playAudioStun(){
+		DFhackLadder = speaker.playSound (AudioEngine.SOUND_POSTER_STUN, false);
+	}
+	public void stopAudioLadder(){
+		speaker.stopSound (DFhackLadder);
+	}
+
 	public void playAudioBaddiePoster() {
 		speaker.playSound (AudioEngine.SOUND_POSTER_BADDIE);
 	}

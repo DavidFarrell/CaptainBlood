@@ -116,6 +116,14 @@ public class PlayerController : FSMSystem {
 			//	Debug.Log( "HIT THE GROUND" );
 				return true;
 			}
+			if ( hits[i].transform.tag == "Player" ){
+		
+				if(hits[i] != this){
+					Debug.Log( "Landed on player");
+					hits[i].transform.GetComponent<PlayerController>().GoToState(s_stun);
+				}
+			}
+
 		}
 
 		Vector3 leftSide = transform.position + (Vector3.left * width);
@@ -192,8 +200,7 @@ public class PlayerController : FSMSystem {
 					hit[i].transform.GetComponent<Wheel>().Grab( this );
 					break;
 				};
-			}
-			
+			} 
 			if ( hadHit ){
 				break;
 			}

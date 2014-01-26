@@ -33,7 +33,12 @@ public class Character_Wheel : FSMState {
 		vec1 =  Parent.transform.parent.position - Parent.transform.position;
 		newvec = Vector3.Cross (vec1, Vector3.forward);
 		newvec.Normalize();
+
 		Parent.rigidbody2D.velocity = newvec * wheel.wheelChuck;
+		if (Parent.transform.parent.GetComponent<Wheel> ().rotationSpeed < 0.0f) {
+			Parent.rigidbody2D.velocity = Parent.rigidbody2D.velocity * -1.0f;
+		}
+
 		Parent.transform.parent = null;
 		//Parent.rigidbody2D.velocity = storedVelocity;
 	}

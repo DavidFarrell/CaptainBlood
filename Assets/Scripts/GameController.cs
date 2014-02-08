@@ -76,6 +76,11 @@ public class GameController : FSMSystem {
 		blueWins = 0;
 	}
 
+	public void resetPosters(){
+		redTotal = 0;
+		blueTotal = 0;
+	}
+
 	public void AdjustRed( int red ){
 		
 		redTotal += red;

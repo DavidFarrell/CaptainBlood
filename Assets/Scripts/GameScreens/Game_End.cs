@@ -15,6 +15,7 @@ public class Game_End : FSMState  {
 	public override void OnEnter( object userData ){
 		Debug.Log( "Entered " + this );
 		Application.LoadLevel ("PostGame");
+
 		playerOneReady = false;
 		playerTwoReady = false;
 		winner = (int) userData;
@@ -45,6 +46,7 @@ public class Game_End : FSMState  {
 		if ( playerOneReady && playerTwoReady  ){
 			if (Parent.currentLevel < Parent.numberOfLevels){
 				//go to next level...
+				Parent.resetPosters();
 				Parent.currentLevel = Parent.currentLevel + 1;
 				Parent.GoToState(Parent.g_level_one);
 				Application.LoadLevel("Level" + Parent.currentLevel);

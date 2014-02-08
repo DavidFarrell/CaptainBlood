@@ -157,7 +157,7 @@ public class FSMSystem : MonoBehaviour {
 	/// </summary>
 	public void GoToState(FSMState inState)
 	{
-		Debug.Log ("Going to state" + inState);
+	//	Debug.Log ("Going to state" + inState);
 		// Check for NullState before deleting
 		if (inState == null)
 		{

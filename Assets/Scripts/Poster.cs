@@ -66,6 +66,9 @@ public class Poster : MonoBehaviour {
 			Debug.Log("There's only 3 posters, from 0 to 2. Tried to access " + poster);
 		break;
 		}
+
+		Debug.Log ("Red is at: " + gc.redTotal);
+		Debug.Log ("BLue is at: " + gc.blueTotal);
 	}
 
 	public int GetState(){

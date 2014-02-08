@@ -9,11 +9,11 @@ public class Character_Idle : FSMState {
 
 	// Use this for initialization
 	public override void OnEnter () {
-		Debug.Log( "Entered " + this );
+		//Debug.Log( "Entered " + this );
 		Parent.playerAnimator.SetTrigger ("idle");
 	}
 	public override void OnExit () {
-		Debug.Log( "Exited " + this );
+		//Debug.Log( "Exited " + this );
 
 	}
 
@@ -25,7 +25,7 @@ public class Character_Idle : FSMState {
 
 		// jump
 		if (Input.GetButtonDown (Parent.JumpInput())) {
-			Debug.Log("are we touching in idle? " + Parent.LineCasting());
+			//Debug.Log("are we touching in idle? " + Parent.LineCasting());
 			if ( Parent.LineCasting() ){
 				Parent.GoToState( Parent.s_jump );
 			}

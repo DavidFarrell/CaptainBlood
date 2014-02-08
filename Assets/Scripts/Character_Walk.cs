@@ -14,8 +14,9 @@ public class Character_Walk : FSMState {
 	public override void OnEnter () {
 		audioEngine = Parent.speaker;
 		mySpeaker = audioEngine.playSound (AudioEngine.SOUND_WALKING, true);
-	//	Debug.Log( "Entered " + this );
+		Debug.Log( "Entered " + this );
 		Parent.playerAnimator.SetTrigger ("walk");
+		Parent.playerAnimator.SetBool ("walkB", true);
 		//turn on dust
 		//Parent.dust.SetActive (true);
 		Parent.dust.particleSystem.emissionRate = 5;
@@ -26,7 +27,8 @@ public class Character_Walk : FSMState {
 		//turn off dust
 		//Parent.dust.SetActive (false);
 		Parent.dust.particleSystem.emissionRate = 0;
-	//	Debug.Log( "Exited " + this );
+		Parent.playerAnimator.SetBool ("walkB", false);
+		Debug.Log( "Exited " + this );
 	}
 
 	// Update is called once per frame

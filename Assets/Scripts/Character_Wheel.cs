@@ -53,7 +53,7 @@ public class Character_Wheel : FSMState {
 		//Cancel out the wheel rotation
 
 		Parent.transform.Rotate (0.0f, 0.0f, -Parent.transform.parent.GetComponent<Wheel>().rotationSpeed);
-
+		Debug.Log (Parent.transform.rigidbody2D.velocity.x);
 		if (Input.GetButton (Parent.InteractInput ()) == false) {
 
 

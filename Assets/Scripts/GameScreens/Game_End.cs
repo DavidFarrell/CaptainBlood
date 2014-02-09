@@ -37,17 +37,17 @@ public class Game_End : FSMState  {
 			winscreen = true;
 		}
 
-		if (Input.GetButtonDown("Interact1") || Input.GetKeyDown("a")) {	//The a and b buttons ar just for testing
+		if (Input.GetButtonDown("Weapon1") ||Input.GetButtonDown("Jump1") || Input.GetButtonDown("Interact1") || Input.GetKeyDown("a")) {	//The a and b buttons ar just for testing
 			playerOneReady = true;
 		}
-		if (Input.GetButtonDown("Interact2") || Input.GetKeyDown("b")) {
+		if (Input.GetButtonDown("Weapon2") ||Input.GetButtonDown("Jump2") || Input.GetButtonDown("Interact2") || Input.GetKeyDown("b")) {
 			playerTwoReady = true;
 		}
 		if ( playerOneReady && playerTwoReady  ){
 			if (Parent.currentLevel < Parent.numberOfLevels){
 				//go to next level...
 				Parent.resetPosters();
-				Parent.currentLevel = Parent.currentLevel + 1;
+				Parent.currentLevel++;
 				Parent.GoToState(Parent.g_level_one);
 				Application.LoadLevel("Level" + Parent.currentLevel);
 			}

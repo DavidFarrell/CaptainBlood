@@ -6,8 +6,8 @@ public class Game_Menu : FSMState {
 
 	[System.NonSerialized]
 	public GameController Parent;
-	public GUIText gui1;
-	public GUIText gui2;
+	private GUIText gui1;
+	private GUIText gui2;
 	private bool firstTime = true;
 
 	public override void OnEnter(){
@@ -21,6 +21,7 @@ public class Game_Menu : FSMState {
 
 			gui1 = GameObject.Find("GUI Text 1").GetComponent<GUIText>();
 			gui2 = GameObject.Find("GUI Text 2").GetComponent<GUIText>();
+			firstTime = false;
 		}
 
 		if (Input.GetButtonDown("Weapon1") ||Input.GetButtonDown("Jump1") || Input.GetButtonDown("Interact1") || Input.GetKeyDown("a")) {	//The a and b buttons ar just for testing

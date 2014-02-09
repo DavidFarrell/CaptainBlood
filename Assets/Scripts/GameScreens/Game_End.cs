@@ -6,6 +6,8 @@ public class Game_End : FSMState  {
 
 	bool playerOneReady;
 	bool playerTwoReady;
+	private GUIText gui1;
+	private GUIText gui2;
 	bool winscreen;
 	int winner;
 
@@ -34,14 +36,18 @@ public class Game_End : FSMState  {
 	public override void OnUpdate(){
 		if (!winscreen) {
 				GameObject.Instantiate (Resources.Load ("Prefabs/Win" + winner), Vector3.zero, Quaternion.identity);
+				gui1 = GameObject.Find("GUI Text 1").GetComponent<GUIText>();
+				gui2 = GameObject.Find("GUI Text 2").GetComponent<GUIText>();
 			winscreen = true;
 		}
 
 		if (Input.GetButtonDown("Weapon1") ||Input.GetButtonDown("Jump1") || Input.GetButtonDown("Interact1") || Input.GetKeyDown("a")) {	//The a and b buttons ar just for testing
 			playerOneReady = true;
+			gui1.enabled = false;
 		}
 		if (Input.GetButtonDown("Weapon2") ||Input.GetButtonDown("Jump2") || Input.GetButtonDown("Interact2") || Input.GetKeyDown("b")) {
 			playerTwoReady = true;
+			gui2.enabled = false;
 		}
 		if ( playerOneReady && playerTwoReady  ){
 			if (Parent.currentLevel < Parent.numberOfLevels){
